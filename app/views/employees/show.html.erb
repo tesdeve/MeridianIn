@@ -16,14 +16,26 @@
 </p>
 
 <p>
-  <strong>Payrole:</strong>
-  <%= @employee.payrole %>
+  <strong>Payroll:</strong>
+  <%= @employee.payroll %>
 </p>
 
 <p>
   <strong>Telephone:</strong>
   <%= @employee.telephone %>
 </p>
+
+
+<p>
+  <strong>Status:</strong>
+  <%= @employee.status.upcase %>
+</p>
+
+<p>
+  <strong>Clocked At:</strong>
+  <%= @employee.clocked_at %>
+</p>
+
 
 <%= link_to 'Edit', edit_employee_path(@employee) %> |
 <%= link_to 'Back', employees_path %>

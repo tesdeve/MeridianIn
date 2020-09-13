@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_07_183103) do
+ActiveRecord::Schema.define(version: 2020_09_06_140008) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,7 +26,10 @@ ActiveRecord::Schema.define(version: 2020_09_07_183103) do
     t.datetime "clocked_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+<<<<<<< HEAD
     t.string "clockedin"
+=======
+>>>>>>> ValidationAfterUpload
     t.index ["status"], name: "index_employees_on_status"
   end
 

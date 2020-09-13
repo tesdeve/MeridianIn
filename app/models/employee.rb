@@ -1,21 +1,55 @@
 class Employee < ApplicationRecord
-require 'roo'
-
+  
+  require 'roo'
 
   def self.accessible_attributes 
-    ['name', 'surname', 'role', 'payrole', 'telephone']
+    ['name', 'surname', 'payroll', 'role', 'telephone']
   end
 
-   def self.import(file)
-     spreadsheet = open_spreadsheet(file)
-     header = spreadsheet.row(1)
-     (2..spreadsheet.last_row).each do |i|
-       row = Hash[[header, spreadsheet.row(i)].transpose]
-       employee = find_by_id(row["id"]) || new
-       employee.attributes = row.to_hash.slice(*accessible_attributes)
-       employee.save!
-     end
+  enum status: {booked: 0, clocked_In:1, dna:2 }
+
+  before_create :set_create_attributes
+  def set_create_attributes
+    self.status ||= 0
+  end
+
+  before_save :set_clocked_at
+  def set_clocked_at
+    if self.status == "clocked_In"
+      self.clocked_at = Time.now
+    end
+  end
+
+  after_save :delete_duplicates
+  def delete_duplicates
+    employees = Employee.all.group_by{|employee| [employee.name, employee.surname, employee.payroll, 
+                                      employee.role, employee.telephone]}
+    employees.values.each do |duplicates|  
+    #the first one we want to keep right?
+       first_one = duplicates.shift # or pop for last one
+       # if there are any more left, they are duplicates
+       # so delete all of them
+      duplicates.each{|double| double.destroy}
+    end 
+  end
+
+  def self.import(file)
+   spreadsheet = open_spreadsheet(file)
+   header = spreadsheet.row(1)
+   (2..spreadsheet.last_row).each do |i|
+     row = Hash[[header, spreadsheet.row(i)].transpose]
+     employee = find_by_id(row["id"]) || new
+     employee.attributes = row.to_hash.slice(*accessible_attributes)
+     # strip any leading and trailing whitespace from the inputs
+     # also add the to_s method in case there is any  nil variable or any other type different form string
+     employee.name = employee.name.to_s.strip
+     employee.surname = employee.surname.to_s.strip
+     employee.role = employee.role.to_s.strip 
+     employee.payroll = employee.payroll.to_s.strip
+     employee.telephone = employee.telephone.to_s.strip
+     employee.save!
    end
+  end
 
   def self.open_spreadsheet(file)
     case File.extname(file.original_filename)
@@ -26,8 +60,38 @@ require 'roo'
     end
   end
 
-
 end
+
+##################################################################################################
+
+# Methods for deleting DUPLICATES
+
+
+ # def delete_duplicates
+ #   # find all models and group them on keys which should be common
+ #   grouped = all.group_by{|employee| [model.name,model.year,model.trim,model.make_id] }
+ #   grouped.values.each do |duplicates|
+ #     # the first one we want to keep right?
+ #     first_one = duplicates.shift # or pop for last one
+ #     # if there are any more left, they are duplicates
+ #     # so delete all of them
+ #     duplicates.each{|double| double.destroy} # duplicates can now be destroyed
+ #   end
+ # end
+
+
+
+# Works well but it is missing many other validations such taking into account other fields
+#def delete_duplicates
+#  employees = Employee.group(:name).having('count("name") > 1').count(:name)
+#  employees.each do |key, value|  
+#    duplicates = Employee.where(name: key)[1..value-1]
+#    puts "#{key} = #{duplicates.count}"
+#     duplicates.each(&:destroy)
+#  end 
+#end
+
+##############################################################################################
 
 
 #class Employee < ApplicationRecord

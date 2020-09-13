@@ -27,13 +27,23 @@
   </div>
 
   <div class="field">
-    <%= form.label :payrole %>
-    <%= form.number_field :payrole %>
+    <%= form.label :payroll %>
+    <%= form.number_field :payroll %>
   </div>
 
   <div class="field">
     <%= form.label :telephone %>
     <%= form.number_field :telephone %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.select :status, Employee.statuses.keys.map {|status| [status.upcase, status]} %>
+  </div>
+
+  <div class="field">
+    <%= form.label :clocked_at %>
+    <%= form.number_field :clocked_at %>
   </div>
 
   <div class="actions">
