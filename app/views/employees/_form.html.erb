@@ -1,52 +1,64 @@
-<%= form_with(model: employee, local: true) do |form| %>
-  <% if employee.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(employee.errors.count, "error") %> prohibited this employee from being saved:</h2>
+<div class="card formCard mt-5 mb-5">
+  <div class="card-body">
+    <div clas='formContainer'>
+      <%= form_with(model: @employee, remote: true) do |form| %>
+        <% if @employee.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@employee.errors.count, "error") %> prohibited this employee from being saved:</h2>
 
-      <ul>
-        <% employee.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+            <ul>
+              <% @employee.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
         <% end %>
-      </ul>
+
+        <div class="form-group col-md-12 mb-3">
+          <%= form.label :name, :class => "col-sm-2 send-name" %>
+          <%= form.text_field :name, :class => "col-sm-6 sender-name" %>
+        </div>
+
+        <div class="form-group col-md-12 mb-3">
+          <%= form.label :surname, :class => "col-sm-2 send-name" %>
+          <%= form.text_field :surname, :class => "col-sm-6 sender-name"  %>
+        </div>
+
+        <div class="form-group col-md-12 mb-3">
+          <%= form.label :role, :class => "col-sm-2 send-name" %>
+          <%= form.text_field :role, :class => "col-sm-6 sender-name"  %>
+        </div>
+
+        <div class="form-group col-md-12 mb-3">
+          <%= form.label :payroll, :class => "col-sm-2 send-name" %>
+          <%= form.number_field :payroll, :class => "col-sm-6 sender-name"  %>
+        </div>
+
+        <div class="form-group col-md-12 mb-3">
+          <%= form.label :telephone, :class => "col-sm-2 send-name" %>
+          <%= form.number_field :telephone, :class => "col-sm-6 sender-name"  %>
+        </div>
+
+        <div class="form-group col-md-12 mb-3">
+          <%= form.label :clocked_in, :class => "col-sm-2 send-name" %>
+          <%= form.check_box :clocked_in, :class => "col-sm-6 sender-name"  %>
+        </di>
+
+        <div class="form-group col-md-12 mb-3">
+          <%= form.label :status, :class => "col-sm-2 send-name" %>
+          <%= form.select :status, Employee.statuses.keys.map {|status| [status.upcase, status]}, :class => "col-sm-6 sender-name"  %>
+        </div>
+
+        <div class="form-group col-md-12 mb-3">
+          <%= form.label :clocked_at, :class => "col-sm-2 send-name" %>
+          <%= form.number_field :clocked_at, :class => "col-sm-6 sender-name"  %>
+        </div>
+
+        <div class="actions my-5">
+          <%= form.submit %>
+        </div>
+      <% end %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
   </div>
+</div>
 
-  <div class="field">
-    <%= form.label :surname %>
-    <%= form.text_field :surname %>
-  </div>
-
-  <div class="field">
-    <%= form.label :role %>
-    <%= form.text_field :role %>
-  </div>
-
-  <div class="field">
-    <%= form.label :payroll %>
-    <%= form.number_field :payroll %>
-  </div>
-
-  <div class="field">
-    <%= form.label :telephone %>
-    <%= form.number_field :telephone %>
-  </div>
-
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.select :status, Employee.statuses.keys.map {|status| [status.upcase, status]} %>
-  </div>
-
-  <div class="field">
-    <%= form.label :clocked_at %>
-    <%= form.number_field :clocked_at %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>

@@ -1,0 +1,16 @@
+
+<tr id="employeesAJAX">
+  <td><%= employee.name %></td>
+  <td><%= employee.surname %></td>
+  <td><%= employee.payroll %></td>
+  <td><%= employee.role %></td>
+  <td><%= employee.telephone %></td>
+  <td class="text-center"><%= check_box :employee, :clocked_in %></td>
+  <td><%= employee.status.titleize %></td>
+   <!-- <td><%#= employee.status.present? ? employee.status.titleize : "" %></td> -->
+
+  <td><%= employee.clocked_at == nil ? "" : strftime('%H:%M') %></td> <!-- ('%d %b %Y - %H:%M:%S') -->
+  <td><%= link_to 'Show', employee %></td>
+  <td><%= link_to 'Edit', edit_employee_path(employee) %></td>
+  <td><%= link_to 'Destroy', employee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+</tr>

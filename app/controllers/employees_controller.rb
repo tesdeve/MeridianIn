@@ -10,6 +10,7 @@ class EmployeesController < ApplicationController
   # GET /employees.json
   def index
     @employees = Employee.all.order(:name)
+    @employee = Employee.new
   end
 
   # GET /employees/1
@@ -20,7 +21,12 @@ class EmployeesController < ApplicationController
   # GET /employees/new
   def new
     @employee = Employee.new
+    respond_to do |format|
+      format.html { redirect_to tasks_url }
+      format.js
+    end
   end
+  
 
   # GET /employees/1/edit
   def edit
@@ -33,8 +39,9 @@ class EmployeesController < ApplicationController
 
     respond_to do |format|
       if @employee.save
-        format.html { redirect_to @employee, notice: 'Employee was successfully created.' }
+        format.html { redirect_to @employees, notice: 'Employee was successfully created.' }
         format.json { render :show, status: :created, location: @employee }
+        format.js
       else
         format.html { render :new }
         format.json { render json: @employee.errors, status: :unprocessable_entity }
@@ -74,6 +81,6 @@ class EmployeesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def employee_params
-      params.require(:employee).permit(:name, :surname, :role, :payrole, :telephone, :status, :clocked_at)
+      params.require(:employee).permit(:name, :surname, :role, :payroll, :telephone, :clocked_in, :status, :clocked_at)
     end
 end
