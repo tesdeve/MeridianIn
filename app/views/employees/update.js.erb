@@ -1,0 +1,8 @@
+$('.formCard').remove();
+$('#new_link').show();
+$('#edit_employee_<%= @employee.id %>').submitOnCheck();
+location.reload()  
+
+//Without this reload page I can't see the changes
+
+//$('.edit_employee input[type=checkbox]').remove

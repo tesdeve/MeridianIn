@@ -1,6 +1,6 @@
 class EmployeesController < ApplicationController
   before_action :set_employee, only: [:show, :edit, :update, :destroy]
-
+ skip_forgery_protection
   def import
     Employee.import(params[:file])
     redirect_to root_url, notice: "Employees imported."
@@ -10,6 +10,7 @@ class EmployeesController < ApplicationController
   # GET /employees.json
   def index
     @employees = Employee.all.order(:name)
+    @employee = Employee.new
   end
 
   # GET /employees/1
@@ -20,10 +21,19 @@ class EmployeesController < ApplicationController
   # GET /employees/new
   def new
     @employee = Employee.new
+    respond_to do |format|
+      format.html { redirect_to employees_url }
+      format.js
+    end
   end
+  
 
   # GET /employees/1/edit
   def edit
+    respond_to do |format|
+      format.html { redirect_to employees_url }
+      format.js
+    end
   end
 
   # POST /employees
@@ -33,8 +43,9 @@ class EmployeesController < ApplicationController
 
     respond_to do |format|
       if @employee.save
-        format.html { redirect_to @employee, notice: 'Employee was successfully created.' }
+        format.html { redirect_to @employees, notice: 'Employee was successfully created.' }
         format.json { render :show, status: :created, location: @employee }
+        format.js
       else
         format.html { render :new }
         format.json { render json: @employee.errors, status: :unprocessable_entity }
@@ -47,8 +58,9 @@ class EmployeesController < ApplicationController
   def update
     respond_to do |format|
       if @employee.update(employee_params)
-        format.html { redirect_to @employee, notice: 'Employee was successfully updated.' }
+        format.html { redirect_to employees_path, notice: 'Employee was successfully updated.' }
         format.json { render :show, status: :ok, location: @employee }
+        format.js
       else
         format.html { render :edit }
         format.json { render json: @employee.errors, status: :unprocessable_entity }
@@ -72,8 +84,9 @@ class EmployeesController < ApplicationController
       @employee = Employee.find(params[:id])
     end
 
+
     # Only allow a list of trusted parameters through.
     def employee_params
-      params.require(:employee).permit(:name, :surname, :role, :payrole, :telephone, :status, :clocked_at)
+      params.require(:employee).permit(:name, :surname, :role, :payroll, :telephone, :clocked_in, :status, :clocked_at)
     end
 end

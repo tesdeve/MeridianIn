@@ -1,5 +1,4 @@
 class Employee < ApplicationRecord
-  
   require 'roo'
 
   def self.accessible_attributes 
@@ -11,13 +10,6 @@ class Employee < ApplicationRecord
   before_create :set_create_attributes
   def set_create_attributes
     self.status ||= 0
-  end
-
-  before_save :set_clocked_at
-  def set_clocked_at
-    if self.status == "clocked_In"
-      self.clocked_at = Time.now
-    end
   end
 
   after_save :delete_duplicates

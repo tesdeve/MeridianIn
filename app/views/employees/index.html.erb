@@ -1,18 +1,24 @@
 <p id="notice"><%= notice %></p>
 
-<h1 class="contractorsTitle mb-5">Contractors</h1>
+<h1 class="contractorsTitle">Contractors</h1>
 
-
+<H3 class="contractorsTitle">Date : <%= DateTime.now.strftime('%m - %B- %y')%> </H3> 
 
 <div class="my-5">  
   <h3>Import Contractors</h2>
-  <%= form_tag import_employees_path, multipart: true do %>
-    <%= file_field_tag :file %>
-    <%= submit_tag "Import Contractors" %>
-  <% end %>
+    <div class="my-4">
+      <%= form_tag import_employees_path, multipart: true do %>
+        <%= file_field_tag :file %>
+        <%= submit_tag "Import Contractors" %>
+      <% end %>
+    </div>
 </div>
 
-<%= link_to 'New Employee', new_employee_path %>
+<hr class='my-5'>
+
+<div class="marginBottom">
+  <%= link_to 'New Employee', new_employee_path, id: "new_link", remote: true %>
+</div>
 
 
 <div class="table table-responsive mb-5 mt-4"> 
@@ -23,31 +29,23 @@
           <th>Name</th>
           <th>Surname</th>
           <th>Payroll</th>
-          <th>Role</th>
+          <th> Job Role</th>
           <th>Telephone</th>
+          <th>Clock In</th>
           <th>Status</th>
           <th>Clocked At</th>
           <th colspan="3"></th>
         </tr>
       </thead>
-
       <tbody>
-        <% @employees.each do |employee| %>
-          <tr>
-            <td><%= employee.name %></td>
-            <td><%= employee.surname %></td>
-            <td><%= employee.payroll %></td>
-            <td><%= employee.role %></td>
-            <td><%= employee.telephone %></td>
-            <td><%= employee.status.titleize %></td>
-            <td><%= employee.clocked_at == nil ? "" : strftime('%H:%M') %></td> <!-- ('%d %b %Y - %H:%M:%S') -->
-            <td><%= link_to 'Show', employee %></td>
-            <td><%= link_to 'Edit', edit_employee_path(employee) %></td>
-            <td><%= link_to 'Destroy', employee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          </tr>
-        <% end %>
+        <%= render @employees %>
       </tbody>
     </table>
   </div>
+</div>
+
+<div class="newadded mb-5">
+  <h1> New added </h1>
+
 </div>
 

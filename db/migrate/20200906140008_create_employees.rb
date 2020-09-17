@@ -4,7 +4,7 @@ class CreateEmployees < ActiveRecord::Migration[6.0]
       t.string :name
       t.string :surname
       t.string :role
-      t.integer :payroll
+      t.bigint :payroll
       t.bigint :telephone
 
       t.boolean :clocked_in,   :default => false, :null => false
