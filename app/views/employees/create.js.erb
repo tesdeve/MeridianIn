@@ -1,6 +1,10 @@
 $('.formCard').remove();
 $('#new_link').show();
-location.reload();
+$('#edit_employee_<%= @employee.id %>').submitOnCheck();
+//location.reload(); // At the moment his can be left or removed in this create action
+
+
+
 
 
 // code below reload the page which will at the same timeorganize it alphabetically

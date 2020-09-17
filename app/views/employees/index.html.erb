@@ -1,13 +1,17 @@
 <p id="notice"><%= notice %></p>
 
-<h1 class="contractorsTitle mb-5">Contractors</h1>
+<h1 class="contractorsTitle">Contractors</h1>
+
+<H3 class="contractorsTitle">Date : <%= DateTime.now.strftime('%m - %B- %y')%> </H3> 
 
 <div class="my-5">  
   <h3>Import Contractors</h2>
-  <%= form_tag import_employees_path, multipart: true do %>
-    <%= file_field_tag :file %>
-    <%= submit_tag "Import Contractors" %>
-  <% end %>
+    <div class="my-4">
+      <%= form_tag import_employees_path, multipart: true do %>
+        <%= file_field_tag :file %>
+        <%= submit_tag "Import Contractors" %>
+      <% end %>
+    </div>
 </div>
 
 <hr class='my-5'>
@@ -25,7 +29,7 @@
           <th>Name</th>
           <th>Surname</th>
           <th>Payroll</th>
-          <th>Role</th>
+          <th> Job Role</th>
           <th>Telephone</th>
           <th>Clock In</th>
           <th>Status</th>

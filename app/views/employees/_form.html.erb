@@ -15,43 +15,51 @@
         <% end %>
 
         <div class="form-group col-md-12 mb-3">
-          <%= form.label :name, :class => "col-sm-2 send-name" %>
-          <%= form.text_field :name, :class => "col-sm-6 sender-name" %>
+          <%= form.label :name, :class => "col-sm-2" %>
+          <%= form.text_field :name, :class => "col-sm-6" %>
         </div>
 
         <div class="form-group col-md-12 mb-3">
-          <%= form.label :surname, :class => "col-sm-2 send-name" %>
-          <%= form.text_field :surname, :class => "col-sm-6 sender-name"  %>
+          <%= form.label :surname, :class => "col-sm-2" %>
+          <%= form.text_field :surname, :class => "col-sm-6 "  %>
         </div>
 
         <div class="form-group col-md-12 mb-3">
-          <%= form.label :role, :class => "col-sm-2 send-name" %>
-          <%= form.text_field :role, :class => "col-sm-6 sender-name"  %>
+          <%= form.label :role, :class => "col-sm-2" %>
+          <%= form.text_field :role, :class => "col-sm-6"  %>
         </div>
 
         <div class="form-group col-md-12 mb-3">
-          <%= form.label :payroll, :class => "col-sm-2 send-name" %>
-          <%= form.number_field :payroll, :class => "col-sm-6 sender-name"  %>
+          <%= form.label :payroll, :class => "col-sm-2" %>
+          <%= form.number_field :payroll, :class => "col-sm-6"  %>
         </div>
 
         <div class="form-group col-md-12 mb-3">
-          <%= form.label :telephone, :class => "col-sm-2 send-name" %>
-          <%= form.number_field :telephone, :class => "col-sm-6 sender-name"  %>
+          <%= form.label :telephone, :class => "col-sm-2" %>
+          <%= form.number_field :telephone, :class => "col-sm-6"  %>
         </div>
 
         <div class="form-group col-md-12 mb-3">
-          <%= form.label :clocked_in, :class => "col-sm-2 send-name" %>
-          <%= form.check_box :clocked_in, :class => "col-sm-6 sender-name"  %>
-        </di>
+          <%= form.label :clocked_in, :class => "col-sm-2" %>
+          <% if @employee.clocked_in == false %>
+            <%= form.check_box :clocked_in, :class => "col-sm-6" %>      
+            <%= form.hidden_field :clocked_at, :value => Time.now %>
+          <% elsif @employee.clocked_in == true %>
+            <%= form.check_box :clocked_in, :class => "col-sm-6" %>
+            <%= form.hidden_field :clocked_at, :value => nil %>
+          <% end %>
+        </div>
+          <%#= form.label :clocked_in, :class => "col-sm-2 send-name" %>
+          <%#= form.check_box :clocked_in, :class => "col-sm-6 sender-name"  %>  
 
         <div class="form-group col-md-12 mb-3">
-          <%= form.label :status, :class => "col-sm-2 send-name" %>
-          <%= form.select :status, Employee.statuses.keys.map {|status| [status.upcase, status]}, :class => "col-sm-6 sender-name"  %>
+          <%= form.label :status, :class => "col-sm-2" %>
+          <%= form.select :status, Employee.statuses.keys.map {|status| [status.upcase, status]}, :class => "col-sm-6 "  %>
         </div>
 
         <div class="form-group col-md-12 mb-3">
-          <%= form.label :clocked_at, :class => "col-sm-2 send-name" %>
-          <%= form.number_field :clocked_at, :class => "col-sm-6 sender-name"  %>
+          <%= form.label :clocked_at, :class => "col-sm-2" %>
+          <%= form.number_field :clocked_at, :class => "col-sm-6"  %>
         </div>
 
         <div class="actions my-5">

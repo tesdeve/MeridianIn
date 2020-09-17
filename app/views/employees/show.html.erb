@@ -27,12 +27,12 @@
 
 <p>
   <strong>Clock In:</strong>
-  <%= @employee.clocked_in %>
+  <%= @employee.clocked_in == false ? 'No' : 'Yes'  %>
 </p>
 
 <p>
   <strong>Status:</strong>
-  <%= @employee.status.upcase %>
+  <%= @employee.status.titleize %>
 </p>
 
 <p>
