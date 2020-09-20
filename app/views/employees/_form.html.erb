@@ -41,7 +41,7 @@
 
         <div class="form-group col-md-12 mb-3">
           <%= form.label :clocked_in, :class => "col-sm-2" %>
-          <% if @employee.clocked_in == false %>
+          <% if @employee.clocked_in == false  %>
             <%= form.check_box :clocked_in, :class => "col-sm-6" %>      
             <%= form.hidden_field :clocked_at, :value => Time.now %>
           <% elsif @employee.clocked_in == true %>
@@ -57,13 +57,13 @@
           <%= form.select :status, Employee.statuses.keys.map {|status| [status.upcase, status]}, :class => "col-sm-6 "  %>
         </div>
 
-        <div class="form-group col-md-12 mb-3">
-          <%= form.label :clocked_at, :class => "col-sm-2" %>
-          <%= form.number_field :clocked_at, :class => "col-sm-6"  %>
-        </div>
-
-        <div class="actions my-5">
-          <%= form.submit %>
+        <div class="formbuttons row col-12 justify-content-center"> 
+          <div class="col-5 actions my-5 justify-content-center">
+            <%= form.submit :class => "submitButton text-center" %>
+          </div>
+          <div class="col-5 actions my-5 ml-4 justify-content-center">
+            <%= link_to "Cancel", :back, :class => "cancelButton text-center "  %>
+          </div>
         </div>
       <% end %>
     </div>

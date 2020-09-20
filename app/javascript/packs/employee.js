@@ -9,7 +9,11 @@ $(function() {
 	$('.edit_employee').submitOnCheck();
 });
 
-
+//$(document).ready(function(){
+//	$("#editEmployeelink").click(function(){
+//	     $("#linkEmployee").slideUp();
+// 	});
+//})
 
 
 

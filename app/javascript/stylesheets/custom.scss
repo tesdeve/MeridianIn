@@ -1,3 +1,14 @@
+.alert-success {
+  color: #062b0f;
+  background-color: #10f55f !important;
+  padding: 1%;
+  max-width: 50%;
+  margin-left: 25%;
+  margin-right: 25%;
+  font-size: 20px;
+  font-weight: 300;
+}
+
 .contractorsTitle {
   text-align: center;
 }
@@ -8,4 +19,65 @@
 
 .search-field {
   width: 350px;
+}
+
+.import {
+    background-color: #3f9bff;
+    padding: 3%;
+    border-radius: 1rem;
+    color: white;
+    font-weight: 500;
+}
+
+.separate-top {
+    margin-top: 7%;
+}
+
+.separate-top2 {
+    margin-top: 4%;
+}
+
+.separate {
+    margin-left: 10% !important;
+}
+
+.production {
+    background-color: #00ff58 !important;
+}
+
+.tablesideSpaces {
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+
+
+.submitButton {
+    background-color: #3f9bff;
+    border-radius: 20px !important;
+    color: white;
+    padding: 3%;
+    min-width: 15%;
+    display: inline-block;
+}
+
+.submitButton:hover {
+    color: #3f9bff;
+    background-color: white;
+    border-color: #3f9bff;
+}
+
+.cancelButton {
+    background-color: #434951;
+    border-radius: 20px !important;
+    color: white;
+    padding: 3%;
+    min-width: 45%;
+    display: inline-block;
+}
+
+.cancelButton:hover {
+    color: #434951;
+    text-decoration: underline;
+    background-color: white;
 }

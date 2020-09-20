@@ -9,7 +9,7 @@ require("@rails/activestorage").start()
 require("channels")
 require("jquery")
 require("packs/employee")
-
+require("packs/scroll")
 import 'bootstrap'
 import '../stylesheets/application'
 

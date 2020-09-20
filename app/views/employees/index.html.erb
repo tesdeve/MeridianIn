@@ -1,51 +1,137 @@
-<p id="notice"><%= notice %></p>
+<!-- <div class="notice text-center my-5"> -->
+ <!--  <p id="notice noticeIndex "><%= notice %></p>  -->
+
+<%= render 'layouts/flash_notice_alert' %>
+<!-- </div> -->
 
 <h1 class="contractorsTitle">Contractors</h1>
 
-<H3 class="contractorsTitle">Date : <%= DateTime.now.strftime('%m - %B- %y')%> </H3> 
+<!-- <H3 class="contractorsTitle">Date : <%#= @employee.first.created_at.DateTime.now.strftime('%m - %B- %y')%> </H3>  -->
 
-<div class="my-5">  
-  <h3>Import Contractors</h2>
-    <div class="my-4">
-      <%= form_tag import_employees_path, multipart: true do %>
-        <%= file_field_tag :file %>
-        <%= submit_tag "Import Contractors" %>
-      <% end %>
+<h4 class="contractorsTitle mt-3"><%= @employees.present? ? @employees.first.created_at.strftime('%d - %B- %Y') : "" %> </h4> 
+<hr class="my-5">
+<h3 class="text-center mb-4">Instructions</h3>
+<div class="d-flex justify-content-center mt-4">
+  <button type="button" class="btn btn-primary" id="hideShowInstructions">Hide Instructions</button>
+</div>
+
+<div class="row col-12 separate-top justify-content-center">
+  <div class="card col-5">
+    
+    <div class="card-body">
+      <h5 class="card-title">Import Contractors</h5>
+      <p class="card-text"> Click the Browse button to select the spreadsheet you wich to import. Once selected click on the Import button. Done!</p>
+      <div class="row my-4">
+        <%= form_tag import_employees_path, multipart: true do %>
+          <%= file_field_tag :file %>
+          <div class="mt-5"> 
+            <%= submit_tag "Import Contractors", :class => "import" %>
+          </div>
+        <% end %>
+        <%#= link_to 'Destroy', remove_all, data: { confirm: 'Are you sure?' } %>
+        <%#= link_to 'Destroy', @employees, method: :remove_all, data: { confirm: 'Are you sure?' } %>
+
+        <%= link_to 'Delete all', {:action => :remove_all}, :method => :delete , data: { confirm: 'Are you sure?' } %>
+
+
+
+      </div>
     </div>
-</div>
+  </div>
 
-<hr class='my-5'>
-
-<div class="marginBottom">
-  <%= link_to 'New Employee', new_employee_path, id: "new_link", remote: true %>
-</div>
-
-
-<div class="table table-responsive mb-5 mt-4"> 
-  <div class="indextable">
-    <table class="table table-hover"> 
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Surname</th>
-          <th>Payroll</th>
-          <th> Job Role</th>
-          <th>Telephone</th>
-          <th>Clock In</th>
-          <th>Status</th>
-          <th>Clocked At</th>
-          <th colspan="3"></th>
-        </tr>
-      </thead>
-      <tbody>
-        <%= render @employees %>
-      </tbody>
-    </table>
+  <div class="card col-5 separate block1">
+    <div class="card-body">
+      <h5 class="card-title">Export Checked in Contractors</h5>
+      <p class="card-text"> To export this file as a spreadsheet click on the Excel link. Done!</p>
+      <div class="my-4">
+        Download:
+        <%= link_to "Excel", employees_path(format: "xls") %>
+      </div>
+    </div>
   </div>
 </div>
 
-<div class="newadded mb-5">
+
+<hr class="my-5">
+
+<h3 class="text-center mb-4">Clocked in - Stats</h3>
+<div class="d-flex justify-content-center">
+  <button type="button" class="btn btn-primary" id="hideShowStats">Hide Stats</button>
+</div>
+
+<div class="information1">
+  <div class="row col-12 separate-top justify-content-center ">
+    <div class="card col-3">
+      <h5 class= "py-3">Total Supertemps: <%= @employees.where({role: "Supertemp", clocked_in: true}).count %>/<%= @employees.where(clocked_in: true).count %></h5>
+    </div>
+     <div class="card col-3 ml-5 production">
+      <h5 class= "py-3">Total Production: <%= @employees.where({role: "Production", clocked_in: true}).count + @employees.where({role: "Am Replenisher", clocked_in: true}).count %>/<%= @employees.where(role: "Production").count %></h5>
+    </div>
+    <div class="card col-3 ml-5">
+      <h5 class= "py-3">Total Warehouse: <%= @employees.where({role: "Warehouse", clocked_in: true}).count %>/<%= @employees.where(role: "Warehouse").count %></h5>
+    </div>    
+  </div> 
+  <div class="row col-12 separate-top2 justify-content-center">
+    <div class="card col-3">
+      <h5 class= "py-3"> Total Stock Coordinators: <%= @employees.where({role: "Stock Coordinator", clocked_in: true}).count %>/<%= @employees.where(role: "Stock Coordinator").count %></h5>
+    </div>
+    <div class="card col-3 ml-5">
+      <h5 class= "py-3"> Total Hygine/Sany: <%= @employees.where({role: "Hygiene/Sany", clocked_in: true}).count %>/<%= @employees.where(role: "Hygiene").count %></h5>
+    </div> 
+    <div class="card col-3 ml-5">
+      <h5 class= "py-3">  Total Covid Champions: <%= @employees.where({role: "Covid Champion", clocked_in: true}).count %>/<%= @employees.where(role: "Covid-Champion").count %></h5>
+    </div>
+  </div> 
+  <div class="row col-12 separate-top2 justify-content-center">
+    <div class="card col-3">
+      <h5 class= "py-3"> Total Clocked In: <%= @employees.where(clocked_in: true).count %> </h5>
+    </div>
+  </div>
+</div>
+  <%#= @employees.where({role: "Supertemp", clocked_in: true}).count %>
+<hr class='my-5' id=' linkEmployee'>
+
+<div class="tablesideSpaces"> 
+  <div class="marginBottom">
+    <%= link_to 'New Employee', new_employee_path, id: "new_link", remote: true %>
+  </div> 
+
+
+  <div class="table table-responsive mb-5 mt-4"> 
+    <div class="indextable">
+      <table class="table table-hover"> 
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Payroll</th>
+            <th> Job Role</th>
+            <!-- <th>Telephone</th> -->
+            <th class="text-center">Clock In</th>
+            <!-- <th>Status</th> -->
+            <th>Clocked At</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= render @employees %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+<!-- <div class="newadded mb-5">
   <h1> New added </h1>
 
-</div>
+</div> -->
+
 
