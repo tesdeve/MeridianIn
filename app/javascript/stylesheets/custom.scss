@@ -22,14 +22,14 @@
 }
 
 .import {
-    background-color: #3f9bff;
+    background-color: #0069d9;
     padding: 3%;
     border-radius: 1rem;
     color: white;
     font-weight: 500;
 }
 
-.separate-top {
+.separate-top, .marginInstructions {
     margin-top: 7%;
 }
 
@@ -80,4 +80,19 @@
     color: #434951;
     text-decoration: underline;
     background-color: white;
+}
+
+
+label {
+  font-weight: 500;
+  margin-left: 1%;
+  color: #0069d9
+}
+
+
+.visually-hidden {
+    position: absolute;
+    left: -100vw;
+    
+    /* Note, you may want to position the checkbox over top the label and set the opacity to zero instead. It can be better for accessibilty on some touch devices for discoverability. */
 }
