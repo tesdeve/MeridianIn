@@ -8,7 +8,7 @@
 
  
 
-<h1 class="contractorsTitle">Temps</h1>
+<h1 class="contractorsTitle">Temps Attendance</h1>
 
 <!-- <H3 class="contractorsTitle">Date : <%#= @employee.first.created_at.DateTime.now.strftime('%m - %B- %y')%> </H3>  -->
 
@@ -51,7 +51,7 @@
         Download:
         <%= link_to "Excel", employees_path(format: "xls") %>
       </div>
-      <p class="card-text"> After you export the Excel file you can delete this list and be ready for a new upload in another time. To delete the list click the link below. </p>
+      <p class="card-text"> After you dowload the Temps Attendance as Excel file you can delete it and upload a new one when needed. Simply click the link below. </p>
        <%= link_to 'Delete List', {:action => :remove_all}, :method => :delete , data: { confirm: 'Are you sure?' }, :class => "mt-4" %>
     
     </div>
