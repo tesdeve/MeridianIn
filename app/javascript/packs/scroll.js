@@ -1,15 +1,26 @@
 $(document).ready(function(){
-	$('#hideShowStats').click(function(){
-		$(this).text(function(i, text){ 
-			text === 'Hide Stats' ? 'Show Stats' : 'Hide Stats'; //'Show Instructions' 
-		})
-		$('.information1').toggle();
+	$('.hideShowInstructions').click(function(){
+		var $this = $(this);
+		$this.toggleClass('hideShowInstructions');
+		if($this.hasClass('hideShowInstructions')){
+			$this.text('Hide Instructions');			
+		} else {
+			$this.text('Show Instructions ');
+		}
+		$('.instructions').toggle();
 	});
-	$('#hideShowInstructions').click(function(){
-		$(this).text(function(i, text){ 
-			text === 'Hide Instructions' ? 'Show Instructions' : 'Hide Instructions'; //'Show Instructions' 
-		})
-		$('.separate-top').toggle();
+		
+
+
+	$('.hideShowStats').click(function(){
+		var $this = $(this);
+		$this.toggleClass('hideShowStats');
+		if($this.hasClass('hideShowStats')){
+			$this.text('Hide Stats');			
+		} else {
+			$this.text('Show Stats ');
+		}
+		$('.information').toggle();
 	});
 
 		$("#editEmployeelink").click(function(){
@@ -18,4 +29,22 @@ $(document).ready(function(){
 	//$('.cancelButton').click(function(){
 	//	location.reload()
 	//})
-});
+ 	});
+
+
+	///////////////////////////////////////////
+
+
+
+// Will Bontrager Software, LLC
+// https://www.willmaster.com
+// December 20, 2014
+
+
+
+
+
+
+
+
+

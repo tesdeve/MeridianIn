@@ -10,6 +10,8 @@ require("channels")
 require("jquery")
 require("packs/employee")
 require("packs/scroll")
+require("packs/hideShowDivs")
+
 import 'bootstrap'
 import '../stylesheets/application'
 

@@ -2,9 +2,13 @@
  <!--  <p id="notice noticeIndex "><%= notice %></p>  -->
 
 <%= render 'layouts/flash_notice_alert' %>
+
+
 <!-- </div> -->
 
-<h1 class="contractorsTitle">Contractors</h1>
+ 
+
+<h1 class="contractorsTitle">Temps</h1>
 
 <!-- <H3 class="contractorsTitle">Date : <%#= @employee.first.created_at.DateTime.now.strftime('%m - %B- %y')%> </H3>  -->
 
@@ -12,10 +16,13 @@
 <hr class="my-5">
 <h3 class="text-center mb-4">Instructions</h3>
 <div class="d-flex justify-content-center mt-4">
-  <button type="button" class="btn btn-primary" id="hideShowInstructions">Hide Instructions</button>
-</div>
+  <input type="checkbox" class="AvGamesCheckBox hideShowInstructions" name="vehicle1" value="Bike">
 
-<div class="row col-12 separate-top justify-content-center">
+  <label for="vehicle1"> Show / Hide Instructions</label>
+</div> 
+<hr>
+
+<div class="row col-12 marginInstructions justify-content-center instructions">
   <div class="card col-5">
     
     <div class="card-body">
@@ -24,17 +31,14 @@
       <div class="row my-4">
         <%= form_tag import_employees_path, multipart: true do %>
           <%= file_field_tag :file %>
-          <div class="mt-5"> 
-            <%= submit_tag "Import Contractors", :class => "import" %>
-          </div>
+           
+            <%= submit_tag "Import Contractors", :class => "import mt-4" %>
+          
         <% end %>
         <%#= link_to 'Destroy', remove_all, data: { confirm: 'Are you sure?' } %>
         <%#= link_to 'Destroy', @employees, method: :remove_all, data: { confirm: 'Are you sure?' } %>
 
-        <%= link_to 'Delete all', {:action => :remove_all}, :method => :delete , data: { confirm: 'Are you sure?' } %>
-
-
-
+       
       </div>
     </div>
   </div>
@@ -47,6 +51,9 @@
         Download:
         <%= link_to "Excel", employees_path(format: "xls") %>
       </div>
+      <p class="card-text"> After you export the Excel file you can delete this list and be ready for a new upload in another time. To delete the list click the link below. </p>
+       <%= link_to 'Delete List', {:action => :remove_all}, :method => :delete , data: { confirm: 'Are you sure?' }, :class => "mt-4" %>
+    
     </div>
   </div>
 </div>
@@ -55,17 +62,24 @@
 <hr class="my-5">
 
 <h3 class="text-center mb-4">Clocked in - Stats</h3>
-<div class="d-flex justify-content-center">
-  <button type="button" class="btn btn-primary" id="hideShowStats">Hide Stats</button>
-</div>
+<!-- <div class="d-flex justify-content-center mt-4">
+  <input type="checkbox" class="AvGamesCheckBox hideShowInstructions" name="vehicle1" value="Bike">
 
-<div class="information1">
+  <label for="vehicle1"> Show / Hide Stats</label>
+</div> 
+ -->
+<!-- 
+<div class="d-flex justify-content-center">
+  <button type="button" class="btn btn-primary hideShowStats" id="hideShowStats">Hide Stats</button>
+</div> -->
+
+<div class="information">
   <div class="row col-12 separate-top justify-content-center ">
     <div class="card col-3">
-      <h5 class= "py-3">Total Supertemps: <%= @employees.where({role: "Supertemp", clocked_in: true}).count %>/<%= @employees.where(clocked_in: true).count %></h5>
+      <h5 class= "py-3">Total Supertemps: <%= @employees.where({role: "Supertemp", clocked_in: true}).count %>/<%= @employees.where({role: "Supertemp"}).count %></h5>
     </div>
      <div class="card col-3 ml-5 production">
-      <h5 class= "py-3">Total Production: <%= @employees.where({role: "Production", clocked_in: true}).count + @employees.where({role: "Am Replenisher", clocked_in: true}).count %>/<%= @employees.where(role: "Production").count %></h5>
+      <h5 class= "py-3">Total Production: <%= @employees.where({role: "Production", clocked_in: true}).count + @employees.where({role: "Am Replenisher", clocked_in: true}).count + @employees.where({role: "Am Booked", clocked_in: true}).count%>/<%= @employees.where(role: "Production").count + @employees.where({role: "Am Replenisher"}).count + @employees.where({role: "Am Booked"}).count %></h5>
     </div>
     <div class="card col-3 ml-5">
       <h5 class= "py-3">Total Warehouse: <%= @employees.where({role: "Warehouse", clocked_in: true}).count %>/<%= @employees.where(role: "Warehouse").count %></h5>
@@ -76,10 +90,10 @@
       <h5 class= "py-3"> Total Stock Coordinators: <%= @employees.where({role: "Stock Coordinator", clocked_in: true}).count %>/<%= @employees.where(role: "Stock Coordinator").count %></h5>
     </div>
     <div class="card col-3 ml-5">
-      <h5 class= "py-3"> Total Hygine/Sany: <%= @employees.where({role: "Hygiene/Sany", clocked_in: true}).count %>/<%= @employees.where(role: "Hygiene").count %></h5>
+      <h5 class= "py-3"> Total Hygine/Sany: <%= @employees.where({role: "Hygiene/Sany", clocked_in: true}).count %>/<%= @employees.where(role: "Hygiene/Sany").count %></h5>
     </div> 
     <div class="card col-3 ml-5">
-      <h5 class= "py-3">  Total Covid Champions: <%= @employees.where({role: "Covid Champion", clocked_in: true}).count %>/<%= @employees.where(role: "Covid-Champion").count %></h5>
+      <h5 class= "py-3">  Total Covid Champions: <%= @employees.where({role: "Covid Champion", clocked_in: true}).count %>/<%= @employees.where(role: "Covid Champion").count %></h5>
     </div>
   </div> 
   <div class="row col-12 separate-top2 justify-content-center">
@@ -124,6 +138,38 @@
 
 
 
+
+
+
+
+<!-- FROM HERE -->
+
+<!-- To Be refined, close to a good solution for toggling label. Missing puttin it together 
+<input type="checkbox" id="my-checkbox" onclick="ChangeCheckboxLabel(this)"> 
+<span id="my-checkbox-checked" style="display:inline; font-weight:bold; color:blue;">Show Instructions</span>
+<span id="my-checkbox-unchecked" style="display:none; font-style:italic; ; color:red;">Hide Instructions</span>
+
+
+Antonio : IT GOES TOGETHER WITH CODE BELOW 
+-->
+<!-- <script>
+function ChangeCheckboxLabel(ckbx)
+{
+   var d = ckbx.id;
+   if( ckbx.checked )
+   {
+      document.getElementById(d+"-checked").style.display = "inline";
+      document.getElementById(d+"-unchecked").style.display = "none";
+   }
+   else
+   {
+      document.getElementById(d+"-checked").style.display = "none";
+      document.getElementById(d+"-unchecked").style.display = "inline";
+   }
+}
+</script> -->
+
+<!-- TO HERE -->
 
 
 
