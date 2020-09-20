@@ -18,8 +18,8 @@ ActiveRecord::Schema.define(version: 2020_09_07_183103) do
   create_table "employees", force: :cascade do |t|
     t.string "name"
     t.string "surname"
-    t.string "role"
     t.bigint "payroll"
+    t.string "role"
     t.bigint "telephone"
     t.boolean "clocked_in", default: false, null: false
     t.integer "status"

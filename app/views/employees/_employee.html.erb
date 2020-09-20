@@ -1,9 +1,9 @@
 <tr id="employee_<%= employee.id %>">
-  <td><%= employee.name %></td>
-  <td><%= employee.surname %></td>
+  <td><%= employee.name.titleize %></td>
+  <td><%= employee.surname.titleize %></td>
   <td><%= employee.payroll %></td>
-  <td><%= employee.role %></td>
-  <td><%= employee.telephone %></td>
+  <td><%= employee.role.titleize %></td>
+  <!-- <td><%#= employee.telephone %></td> -->
   <% if employee.clocked_in == false %>
     <td class="text-center" id="<%= employee.id %>"><%= form_for(employee, :method => :put, remote: true) do |f| %>
               <%= f.check_box :clocked_in %>      
@@ -15,10 +15,10 @@
               <%= f.hidden_field :clocked_at, :value => nil %>
     <% end %></td>
   <% end %>
-  <td><%= employee.status.titleize %></td>
+  <!-- <td><%#= employee.status.titleize %></td> -->
   <td><%= employee.clocked_at == nil ? "" : employee.clocked_at.localtime.strftime('%H:%M') %></td> 
   <td><%= link_to 'Show', employee %></td>
-  <td><%= link_to 'Edit', edit_employee_path(employee), remote: true %></td>
+  <td><%= link_to 'Edit', edit_employee_path(employee), remote: true, id: "editEmployeelink" %></td>
   <td><%= link_to 'Destroy', employee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 </tr>
 

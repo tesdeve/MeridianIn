@@ -1,24 +1,11 @@
 $('.formCard').remove();
 $('#new_link').show();
+$('tbody').append('<%= j render(@employee) %>')
 $('#edit_employee_<%= @employee.id %>').submitOnCheck();
-//location.reload(); // At the moment his can be left or removed in this create action
+//location.reload(); // At the moment his can be left or removed in this create action 
 
 
-
-
-
-// code below reload the page which will at the same timeorganize it alphabetically
-
-//$('tbody').append('<%= j render(@employee) %>');
+//$('.formCard').remove();
+//$('#new_link').show();
 //alert("Employee Created")
-//$('#employeesAJAX').append('<%= j render(@employee) %>');
-
-// Code below could be used if I want to add the employee to mark the new added employee to the list
-// But it will be removed with the reload of the page so another strategy is needed.
-
-
-
-//location.reload()
-//$('.newadded').append('<%= j render(@employee) %>');
-//newadded
-
+//$('.newadded').append('<%= j render(@employee) %>');//

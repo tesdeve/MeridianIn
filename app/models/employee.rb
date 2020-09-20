@@ -1,11 +1,22 @@
 class Employee < ApplicationRecord
   require 'roo'
 
+  def self.to_csv(options = {})
+    CSV.generate(options) do |csv|
+    #CSV.generate do |csv|
+      csv << column_names
+      all.each do |employee|
+        csv << employee.attributes.values_at(*column_names)
+      end
+    end
+  end
+
+
   def self.accessible_attributes 
     ['name', 'surname', 'payroll', 'role', 'telephone']
   end
 
-  enum status: {booked: 0, clocked_In:1, dna:2 }
+  enum status: {Booked: 0, Clocked_In:1, DNA:2 }
 
   before_create :set_create_attributes
   def set_create_attributes
@@ -34,9 +45,9 @@ class Employee < ApplicationRecord
      employee.attributes = row.to_hash.slice(*accessible_attributes)
      # strip any leading and trailing whitespace from the inputs
      # also add the to_s method in case there is any  nil variable or any other type different form string
-     employee.name = employee.name.to_s.strip
-     employee.surname = employee.surname.to_s.strip
-     employee.role = employee.role.to_s.strip 
+     employee.name = employee.name.titleize.to_s.strip
+     employee.surname = employee.surname.titleize.to_s.strip
+     employee.role = employee.role.titleize.to_s.strip 
      employee.payroll = employee.payroll.to_s.strip
      employee.telephone = employee.telephone.to_s.strip
      employee.save!
