@@ -1,45 +1,54 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @employee.name.titleize %>
-</p>
+<div class="card showCard my-5 ">
+  <div class="card-body">
+    <div clas='formContainer'>
 
-<p>
-  <strong>Surname:</strong>
-  <%= @employee.surname.titleize %>
-</p>
+      <p>
+        <strong>Name:</strong>
+        <%= @employee.name.titleize %>
+      </p>
 
-<p>
-  <strong>Role:</strong>
-  <%= @employee.role.titleize  %>
-</p>
+      <p>
+        <strong>Surname:</strong>
+        <%= @employee.surname.titleize %>
+      </p>
 
-<p>
-  <strong>Payroll:</strong>
-  <%= @employee.payroll.titleize  %>
-</p>
+      <p>
+        <strong>Role:</strong>
+        <%= @employee.role.titleize  %>
+      </p>
 
-<p>
-  <strong>Telephone:</strong>
-  <%= @employee.telephone %>
-</p>
+      <p>
+        <strong>Payroll:</strong>
+        <%= @employee.payroll %>
+      </p>
 
-<p>
-  <strong>Clock In:</strong>
-  <%= @employee.clocked_in == false ? 'No' : 'Yes'  %>
-</p>
+      <p>
+        <strong>Telephone:</strong>
+        <%= @employee.telephone %>
+      </p>
 
-<p>
-  <strong>Status:</strong>
-  <%= @employee.status.titleize %>
-</p>
+      <p>
+        <strong>Clock In:</strong>
+        <%= @employee.clocked_in == false ? 'No' : 'Yes'  %>
+      </p>
 
-<p>
-  <strong>Clocked At:</strong>
-  <%= @employee.clocked_at %>
-</p>
+      <p>
+        <strong>Status:</strong>
+        <%= @employee.status.titleize %>
+      </p>
+
+      <p>
+        <strong>Clocked At:</strong>
+        <%= @employee.clocked_at.localtime.strftime('%H:%M') %>
+      </p>
 
 
-<%= link_to 'Edit', edit_employee_path(@employee) %> |
-<%= link_to 'Back', employees_path %>
+      <%= link_to 'Edit', edit_employee_path(@employee) %> |
+      <%= link_to 'Back', employees_path %>
+
+    </div>
+  </div>
+</div>
+
