@@ -25,8 +25,7 @@ class Employee < ApplicationRecord
 
   after_save :delete_duplicates
   def delete_duplicates
-    employees = Employee.all.group_by{|employee| [employee.name, employee.surname, employee.payroll, 
-                                      employee.role, employee.telephone]}
+    employees = Employee.all.group_by{|employee| [employee.name, employee.surname, employee.payroll, employee.role, employee.telephone]}
     employees.values.each do |duplicates|  
     #the first one we want to keep right?
        first_one = duplicates.shift # or pop for last one
