@@ -3,7 +3,7 @@ class CreateEmployees < ActiveRecord::Migration[6.0]
     create_table :employees do |t|
       t.string :name
       t.string :surname
-      t.bigint :payroll
+      t.string :payroll
       t.string :role
       t.bigint :telephone
 
