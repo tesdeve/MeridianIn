@@ -64,7 +64,7 @@
 <h3 class="text-center mb-4">Clocked in - Stats</h3>
 <div class="d-flex justify-content-center mt-4 ">
   <div class="card col-3 ml-5 production">
-    <h5 class= "py-3 text-center">Total Production: <%= @employees.where({role: "Booked", clocked_in: true}).count + @employees.where({role: "Replenisher", clocked_in: true}).count + @employees.where({role: "Booked New", clocked_in: true}).count%>/<%= @employees.where({role: "Booked"}).count + @employees.where({role: "Replenisher"}).count + @employees.where({role: "Booked New"}).count %></h5>
+    <h5 class= "py-3 text-center">Total Production: <%= @employees.where({role: "BOOKED", clocked_in: true}).count + @employees.where({role: "REPLENISHER", clocked_in: true}).count + @employees.where({role: "BOOKED NEW", clocked_in: true}).count%>/<%= @employees.where({role: "BOOKED"}).count + @employees.where({role: "REPLENISHER"}).count + @employees.where({role: "BOOKED NEW"}).count %></h5>
   </div>
 </div>
   <!-- <div class="d-flex justify-content-center mt-4">
@@ -82,13 +82,13 @@
   <div class="row col-12 separate-top justify-content-center ">
 
      <div class="card col-3 ml-5">
-      <h5 class= "py-3 text-center">Total AM Booked: <%= @employees.where({role: "Booked", clocked_in: true}).count %>/<%= @employees.where({role: "Booked"}).count %></h5>
+      <h5 class= "py-3 text-center">Total Booked: <%= @employees.where({role: "BOOKED", clocked_in: true}).count %>/<%= @employees.where({role: "BOOKED"}).count %></h5>
     </div>
     <div class="card col-3 ml-5 ">
-      <h5 class= "py-3 text-center">Total AM Replenisher: <%= @employees.where({role: "Replenisher", clocked_in: true}).count %>/<%= @employees.where({role: "Replenisher"}).count %></h5>
+      <h5 class= "py-3 text-center">Total Replenisher: <%= @employees.where({role: "REPLENISHER", clocked_in: true}).count %>/<%= @employees.where({role: "REPLENISHER"}).count %></h5>
     </div>
    <div class="card col-3 ml-5">
-      <h5 class= "py-3 text-center">Total AM New Starters: <%= @employees.where({role: "Booked New", clocked_in: true}).count %>/<%= @employees.where({role: "Booked New"}).count %></h5>
+      <h5 class= "py-3 text-center">Total AM New Starters: <%= @employees.where({role: "BOOKED NEW", clocked_in: true}).count %>/<%= @employees.where({role: "BOOKED NEW"}).count %></h5>
     </div>
 
   </div> 
@@ -96,25 +96,25 @@
 
   <div class="row col-12 separate-top2 justify-content-center">
     <div class="card col-3 ml-5">
-      <h5 class= "py-3 text-center"> Total Stock Coordinators: <%= @employees.where({role: "Stock Coordinator", clocked_in: true}).count %>/<%= @employees.where({role: "Stock Coordinator"}).count %></h5>
+      <h5 class= "py-3 text-center"> Total Stock Coordinators: <%= @employees.where({role: "STOCK COORDINATOR", clocked_in: true}).count %>/<%= @employees.where({role: "STOCK COORDINATOR"}).count %></h5>
     </div>
     <div class="card col-3 ml-5">
-      <h5 class= "py-3 text-center"> Total Hygine/Sani: <%= @employees.where({role: "Hygine/Sani", clocked_in: true}).count %>/<%= @employees.where({role: "Hygine/Sani"}).count %></h5>
+      <h5 class= "py-3 text-center"> Total Hygine/Sani: <%= @employees.where({role: "HYGIENE/SANI", clocked_in: true}).count %>/<%= @employees.where({role: "HYGIENE/SANI"}).count %></h5>
     </div> 
     <div class="card col-3 ml-5">
-      <h5 class= "py-3 text-center">  Total Covid Champions: <%= @employees.where({role: "Covid Champion", clocked_in: true}).count %>/<%= @employees.where({role: "Covid Champion"}).count %></h5>
+      <h5 class= "py-3 text-center">  Total Covid Champions: <%= @employees.where({role: "COVID CHAMPION", clocked_in: true}).count %>/<%= @employees.where({role: "COVID CHAMPION"}).count %></h5>
     </div>
   </div>
 
  <div class="row col-12 separate-top2 justify-content-center">
   <div class="card col-3 ml-5">
-    <h5 class= "py-3 text-center">Total Warehouse & ICE: <%= @employees.where({role: "Warehouse Staff", clocked_in: true}).count +  @employees.where({role: "Ice", clocked_in: true}).count %>/<%= @employees.where({role: "Warehouse Staff"}).count +  @employees.where({role: "Ice"}).count %></h5>
+    <h5 class= "py-3 text-center">Total Warehouse & ICE: <%= @employees.where({role: "WAREHOUSE STAFF", clocked_in: true}).count +  @employees.where({role: "Ice", clocked_in: true}).count %>/<%= @employees.where({role: "WAREHOUSE STAFF"}).count +  @employees.where({role: "Ice"}).count %></h5>
   </div>    
   <div class="card col-3 ml-5">
-    <h5 class= "py-3 text-center">Total Supertemps: <%= @employees.where({role: "Supertemp", clocked_in: true}).count %>/<%= @employees.where({role: "Supertemp"}).count %></h5>
+    <h5 class= "py-3 text-center">Total Supertemps: <%= @employees.where({role: "SUPERTEMP", clocked_in: true}).count %>/<%= @employees.where({role: "SUPERTEMP"}).count %></h5>
   </div>
   <div class="card col-3 ml-5">
-    <h5 class= "py-3 text-center">  Total Office-Admin: <%= @employees.where({role: "Am Office", clocked_in: true}).count %>/<%= @employees.where({role: "Am Office"}).count %></h5>
+    <h5 class= "py-3 text-center">  Total Office-Admin: <%= @employees.where({role: "AM OFFICE", clocked_in: true}).count %>/<%= @employees.where({role: "AM OFFICE"}).count %></h5>
   </div>
 </div>
 

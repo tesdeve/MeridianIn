@@ -12,6 +12,9 @@ require("packs/employee")
 require("packs/scroll")
 require("packs/hideShowDivs")
 
+import Rails from "@rails/ujs";
+window.Rails = Rails
+
 import 'bootstrap'
 import '../stylesheets/application'
 
