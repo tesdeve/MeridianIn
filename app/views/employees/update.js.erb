@@ -1,10 +1,11 @@
-
-
 $('.formCard').remove();
 $('#new_link').show();
 //$('tbody').append('<%= j render(@employee) %>')
-$('#edit_employee_<%= @employee.id %>').submitOnCheck();
-location.reload() 
+//$('#employee_<%= @employee.id %>')//.submitOnCheck();
+//location.reload()
+$('#employee_<%= @employee.id %>')[0].cells[5].innerHTML =  " <%= @employee.clocked_in ? @employee.clocked_at.localtime  : '' %>"
+
+
 
 
 //$('.formCard').remove();

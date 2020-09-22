@@ -44,10 +44,10 @@ class Employee < ApplicationRecord
      employee.attributes = row.to_hash.slice(*accessible_attributes)
      # strip any leading and trailing whitespace from the inputs
      # also add the to_s method in case there is any  nil variable or any other type different form string
-     employee.name = employee.name.titleize.to_s.strip
-     employee.surname = employee.surname.titleize.to_s.strip
-     employee.role = employee.role.titleize.to_s.strip 
-     employee.payroll = employee.payroll.to_s.strip
+     employee.name = employee.name.upcase.to_s.strip
+     employee.surname = employee.surname.upcase.to_s.strip
+     employee.role = employee.role.upcase.to_s.strip 
+     employee.payroll = employee.payroll.upcase.to_s.strip
      employee.telephone = employee.telephone.to_s.strip
      employee.save!
    end

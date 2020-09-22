@@ -3,10 +3,12 @@
   <td><%= employee.surname.titleize %></td>
   <td><%= employee.payroll %></td>
   <td><%= employee.role.titleize %></td>
+
+   
   <!-- <td><%#= employee.telephone %></td> -->
   <% if employee.clocked_in == false %>
     <td class="text-center" id="<%= employee.id %>"><%= form_for(employee, :method => :put, remote: true) do |f| %>
-              <%= f.check_box :clocked_in %>      
+              <%= f.check_box :clocked_in, onclick: "checkInChange(this)" %>      
               <%= f.hidden_field :clocked_at, :value => Time.new + 3600 %>
     <% end %></td>
   <% elsif employee.clocked_in == true %>
