@@ -13,7 +13,7 @@ class Employee < ApplicationRecord
 
 
   def self.accessible_attributes 
-    ['name', 'surname', 'payroll', 'role', 'telephone']
+    ['name', 'surname', 'payroll', 'role']  #, 'telephone'
   end
 
   enum status: {Booked: 0, Clocked_In:1, DNA:2 }
@@ -25,7 +25,7 @@ class Employee < ApplicationRecord
 
   after_save :delete_duplicates
   def delete_duplicates
-    employees = Employee.all.group_by{|employee| [employee.name, employee.surname, employee.payroll, employee.role, employee.telephone]}
+    employees = Employee.all.group_by{|employee| [employee.name, employee.surname, employee.payroll, employee.role]} #, employee.telephone
     employees.values.each do |duplicates|  
     #the first one we want to keep right?
        first_one = duplicates.shift # or pop for last one
@@ -44,8 +44,8 @@ class Employee < ApplicationRecord
      employee.attributes = row.to_hash.slice(*accessible_attributes)
      # strip any leading and trailing whitespace from the inputs
      # also add the to_s method in case there is any  nil variable or any other type different form string
-     employee.name = employee.name.upcase.to_s.strip
-     employee.surname = employee.surname.upcase.to_s.strip
+     employee.name = employee.name.titleize.to_s.strip
+     employee.surname = employee.surname.titleize.to_s.strip
      employee.role = employee.role.upcase.to_s.strip 
      employee.payroll = employee.payroll.to_s.upcase.strip
      employee.telephone = employee.telephone.to_s.strip
