@@ -9,6 +9,24 @@ class EmployeesController < ApplicationController
 
   # GET /employees
   # GET /employees.json
+
+
+
+
+#def index
+#  @search = EMployee.search do
+#    fulltext params[:search]
+#    with(:published_at).less_than(Time.zone.now)
+#    facet(:publish_month)
+#    with(:publish_month, params[:month]) if params[:month].present?
+#  end
+#  @employees = @search.results
+#end
+
+
+
+
+
   def index
     @employees = Employee.all.order(:surname)
     @employee = Employee.new
@@ -19,6 +37,13 @@ class EmployeesController < ApplicationController
       format.xls { send_data @employees.to_csv(col_sep: "\t") }
     end
   end
+
+  def search 
+    @employees = Employee.where("surname ILIKE ?", "%" + params[:q] + "%" )
+    #respond_to do |format|
+    #  format.html { redirect_to employees_url }
+    #end
+  end 
 
   # GET /employees/1
   # GET /employees/1.json

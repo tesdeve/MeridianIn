@@ -16,7 +16,13 @@ class Employee < ApplicationRecord
     ['name', 'surname', 'payroll', 'role']  #, 'telephone'
   end
 
-  enum status: {Booked: 0, Clocked_In:1, DNA:2 }
+#searchable do
+#  text :name
+#  text :surname, :boost => 5
+#  text :payroll  
+#end
+
+  #enum status: {Booked: 0, Clocked_In:1, DNA:2 }
 
   before_create :set_create_attributes
   def set_create_attributes
@@ -61,6 +67,7 @@ class Employee < ApplicationRecord
     else raise "Unknown file type: #{file.original_filename}"
     end
   end
+
 
 end
 
