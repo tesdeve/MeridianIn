@@ -47,7 +47,7 @@ class Employee < ApplicationRecord
      employee.name = employee.name.upcase.to_s.strip
      employee.surname = employee.surname.upcase.to_s.strip
      employee.role = employee.role.upcase.to_s.strip 
-     employee.payroll = employee.payroll.upcase.to_s.strip
+     employee.payroll = employee.payroll.to_s.upcase.strip
      employee.telephone = employee.telephone.to_s.strip
      employee.save!
    end
