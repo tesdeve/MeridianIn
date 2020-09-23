@@ -12,9 +12,9 @@
         <Cell><Data ss:Type="String">Surname</Data></Cell>
         <Cell><Data ss:Type="String">Payroll</Data></Cell>
         <Cell><Data ss:Type="String">Job Role</Data></Cell>
-        <Cell><Data ss:Type="String">Telephone</Data></Cell>
+     <!--    <Cell><Data ss:Type="String">Telephone</Data></Cell> -->
         <Cell><Data ss:Type="String">Clocked In</Data></Cell>
-        <Cell><Data ss:Type="String">Status</Data></Cell>
+        <!-- <Cell><Data ss:Type="String">Status</Data></Cell> -->
         <Cell><Data ss:Type="String">Clocked At</Data></Cell>
       </Row>
     <% @employees.each do |employee| %>
@@ -23,9 +23,9 @@
         <Cell><Data ss:Type="String"><%= employee.name %></Data></Cell>
         <Cell><Data ss:Type="String"><%= employee.surname %></Data></Cell>
         <Cell><Data ss:Type="Number"><%= employee.payrole %></Data></Cell>
-        <Cell><Data ss:Type="Number"><%= employee.telephone %></Data></Cell>
+      <!--   <Cell><Data ss:Type="Number"><%= employee.telephone %></Data></Cell> -->
         <Cell><Data ss:Type="Number"><%= employee.clocked_in %></Data></Cell>
-        <Cell><Data ss:Type="Number"><%= employee.status %></Data></Cell>
+       <!--  <Cell><Data ss:Type="Number"><%= employee.status %></Data></Cell> -->
         <Cell><Data ss:Type="Number"><%= employee.clocked_at %></Data></Cell>
       </Row>
     <% end %>

@@ -22,7 +22,7 @@ class Employee < ApplicationRecord
 #  text :payroll  
 #end
 
-  #enum status: {Booked: 0, Clocked_In:1, DNA:2 }
+  enum status: {Booked: 0, Clocked_In:1, DNA:2 }
 
   before_create :set_create_attributes
   def set_create_attributes
