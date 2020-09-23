@@ -64,6 +64,10 @@
 <h3 class="text-center mb-4">Clocked in - Stats</h3>
 <div class="d-flex justify-content-center mt-4 ">
   <div class="card col-3 ml-5 production">
+
+<%= link_to "Count", employees_path, :class=>" link_colors_text text-center my-4 "  %>
+          
+      
     <h5 class= "py-3 text-center">Total Production: <%= @employees.where({role: "BOOKED", clocked_in: true}).count + @employees.where({role: "REPLENISHER", clocked_in: true}).count + @employees.where({role: "BOOKED NEW", clocked_in: true}).count%>/<%= @employees.where({role: "BOOKED"}).count + @employees.where({role: "REPLENISHER"}).count + @employees.where({role: "BOOKED NEW"}).count %></h5>
   </div>
 </div>
@@ -126,12 +130,12 @@
 
 </div>
   <%#= @employees.where({role: "Supertemp", clocked_in: true}).count %>
-<hr class='my-5' id=' linkEmployee'>
+<hr class='my-5' id='linkEmployee'>
 
 <div class="tablesideSpaces"> 
-  <div class="marginBottom">
-    <%= link_to 'New Employee', new_employee_path, id: "new_link", remote: true %>
-  </div> 
+  <!-- <div class="marginBottom">
+    <%#= link_to 'New Employee', new_employee_path, id: "new_link", remote: true %>
+  </div>  -->
 
 <!-- <%#= form_tag employees_path, :method => :get do %>
   <p>
