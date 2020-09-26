@@ -28,6 +28,7 @@ class EmployeesController < ApplicationController
 
 
   def index
+    total_production
     @employees = Employee.all.order(:surname)
     @employee = Employee.new
     respond_to do |format|
@@ -107,6 +108,13 @@ class EmployeesController < ApplicationController
       format.html { redirect_to employees_url, notice: 'Employee was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def total_production
+    @employees = Employee.all
+    @total_production =  @employees.where({role: "BOOKED", clocked_in: true}).count + 
+    @employees.where({role: "REPLENISHER", clocked_in: true}).count + 
+    @employees.where({role: "BOOKED NEW", clocked_in: true}).count
   end
 
   def remove_all
