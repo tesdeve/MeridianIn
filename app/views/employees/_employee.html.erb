@@ -2,14 +2,14 @@
   <td><%= employee.name.titleize %></td>
   <td><%= employee.surname.titleize %></td>
   <td><%= employee.payroll %></td>
-  <td><%= employee.role.upcase %></td>
+  <td id="role"><%= employee.role.upcase %></td>
 
    
   <!-- <td><%#= employee.telephone %></td> -->
   <% if employee.clocked_in == false %>
     <td class="text-center" id="<%= employee.id %>"><%= form_for(employee, :method => :put, remote: true) do |f| %>
               <%= f.check_box :clocked_in, onclick: "checkInChange(this)" %>      
-              <%= f.hidden_field :clocked_at, :value => Time.new + 3600 %>
+              <%= f.hidden_field :clocked_at, :value => Time.new %>   <!-- + 3600 -->
     <% end %></td>
     <td><%= employee.clocked_at = "" %></td> 
     
@@ -19,15 +19,17 @@
               <%= f.hidden_field :clocked_at, :value => nil %>
     <% end %></td>
 
-  <td><%= employee.updated_at.localtime.strftime('%H:%M') %></td> 
+  <!-- <td><%#= employee.updated_at.strftime('%H:%M') %></td>  -->
+
+ <td><%= employee.clocked_at == nil ? "" : employee.clocked_at.localtime.strftime('%H:%M') %></td>
   <% end %>
   <!-- <td><%#= employee.status.titleize %></td> -->
     
  <!--  <td><%#= employee.clocked_at == nil ? "" : employee.clocked_at.strftime('%H:%M') %></td>  -->
 
   <td><%= link_to 'Show', employee %></td>
-  <td><%= link_to 'Edit', edit_employee_path(employee), remote: true, id: "editEmployeelink" %></td>
-  <td><%= link_to 'Destroy', employee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  <!-- <td><%#= link_to 'Edit', edit_employee_path(employee), remote: true, id: "editEmployeelink" %></td> -->
+  <!-- <td><%#= link_to 'Destroy', employee, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
 </tr>
 
 

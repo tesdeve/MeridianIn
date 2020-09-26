@@ -10,11 +10,11 @@
 }
 
 .link_colors_text {
-    background-color: white !important;
-    max-width: 50% !important;
-    margin-left: 25% !important;
-    font-weight: 500 !important;
-    border-radius: 4% !important;
+  background-color: white !important;
+  max-width: 50% !important;
+  margin-left: 25% !important;
+  font-weight: 500 !important;
+  border-radius: 4% !important;
 }
 .contractorsTitle {
   text-align: center;
@@ -29,74 +29,86 @@
 }
 
 .import {
-    background-color: #0069d9;
-    padding: 3%;
-    border-radius: 1rem;
-    color: white;
-    font-weight: 500;
+  background-color: #0069d9;
+  padding: 3%;
+  border-radius: 1rem;
+  color: white;
+  font-weight: 500;
 }
 
 .marginInstructions {
-    margin-top: 7%;
+  margin-top: 7%;
 }
 
 .separate-top {
-   margin-top: 5%;
+  margin-top: 5%;
 }
 
 .separate-top2 {
-    margin-top: 4%;
+  margin-top: 4%;
 }
 
 .separate {
-    margin-left: 10% !important;
+  margin-left: 10% !important;
 }
 
 .production {
-    background-color: #00ff58 !important;
+  background-color: #00ff58 !important;
 }
 
-.tablesideSpaces {
-    margin-left: 5%;
-    margin-right: 5%;
+.production, .booked_card, .replenisher_card, .booked_new_card, .stock_coordinator_card, .hygiene_sani_card,  .covid_champion_card, .warehouse_ice_card, .supertemps_card, .office_card{
+  font-size: 20px;
+  font-weight: 500;
 }
+
+
+.t_booked, .t_replenisher, .t_booked_new, .t_stock_coordinator,
+.t_hygiene_sani, .t_covid_champion, .t_warehouse_ice, .t_supertemps, .t_office {
+  padding-right: 0 !important;
+  text-align: right;
+}
+.tablesideSpaces {
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
 
 
 
 .submitButton {
-    background-color: #3f9bff;
-    border-radius: 20px !important;
-    color: white;
-    padding: 3%;
-    min-width: 15%;
-    display: inline-block;
+  background-color: #3f9bff;
+  border-radius: 20px !important;
+  color: white;
+  padding: 3%;
+  min-width: 15%;
+  display: inline-block;
 }
 
 .submitButton:hover {
-    color: #3f9bff;
-    background-color: white;
-    border-color: #3f9bff;
+  color: #3f9bff;
+  background-color: white;
+  border-color: #3f9bff;
 }
 
 .cancelButton {
-    background-color: #434951;
-    border-radius: 20px !important;
-    color: white;
-    padding: 3%;
-    min-width: 45%;
-    display: inline-block;
+  background-color: #434951;
+  border-radius: 20px !important;
+  color: white;
+  padding: 3%;
+  min-width: 45%;
+  display: inline-block;
 }
 
 .cancelButton:hover {
-    color: #434951;
-    text-decoration: underline;
-    background-color: white;
+  color: #434951;
+  text-decoration: underline;
+  background-color: white;
 }
 
 
 .showCard {
-    margin-left: 20%;
-    margin-right: 20%;
+  margin-left: 20%;
+  margin-right: 20%;
 }
 
 label {
@@ -107,8 +119,18 @@ label {
 
 
 .visually-hidden {
-    position: absolute;
-    left: -100vw;
+  position: absolute;
+  left: -100vw;
     
     /* Note, you may want to position the checkbox over top the label and set the opacity to zero instead. It can be better for accessibilty on some touch devices for discoverability. */
+}
+
+
+.allBooked, .booked_card, .replenisher_card, .booked_new_card, .stock_coordinator_card{
+  padding-left: 0 !important;
+}
+
+#total_production, #total_booked, #total_replenisher, #total_booked_new, #total_stock_coordinator, #total_hygiene_sani, #total_covid_champion, #total_warehouse_ice, #total_supertemps, #total_office {
+  padding-right: 0 !important;
+  text-align: right;
 }
