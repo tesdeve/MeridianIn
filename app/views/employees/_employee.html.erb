@@ -9,7 +9,7 @@
   <% if employee.clocked_in == false %>
     <td class="text-center" id="<%= employee.id %>"><%= form_for(employee, :method => :put, remote: true) do |f| %>
               <%= f.check_box :clocked_in, onclick: "checkInChange(this)" %>      
-              <%= f.hidden_field :clocked_at, :value => Time.new %>   <!-- + 3600 -->
+              <%= f.hidden_field :clocked_at, :value => Time.new.localtime %>   <!-- + 3600 -->
     <% end %></td>
     <td><%= employee.clocked_at = "" %></td> 
     
