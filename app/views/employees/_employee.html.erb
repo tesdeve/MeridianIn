@@ -1,7 +1,7 @@
 <tr id="employee_<%= employee.id %>">
-  <td><%= employee.name.titleize %></td>
-  <td><%= employee.surname.titleize %></td>
-  <td><%= employee.payroll %></td>
+  <td id="name_column_<%= employee.id %>"><%= employee.name.titleize %></td>
+  <td id="surname_column"><%= employee.surname.titleize %></td>
+  <td id="payroll_column"><%= employee.payroll %></td>
   <td id="role"><%= employee.role.upcase %></td>
 
    
@@ -28,7 +28,7 @@
  <!--  <td><%#= employee.clocked_at == nil ? "" : employee.clocked_at.strftime('%H:%M') %></td>  -->
 
   <td><%= link_to 'Show', employee %></td>
-  <!-- <td><%#= link_to 'Edit', edit_employee_path(employee), remote: true, id: "editEmployeelink" %></td> -->
+  <td><%= link_to 'Edit', edit_employee_path(employee), remote: true, id: "editEmployeelink" %></td> 
   <!-- <td><%#= link_to 'Destroy', employee, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
 </tr>
 

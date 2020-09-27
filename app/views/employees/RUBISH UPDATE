@@ -1,0 +1,77 @@
+//$('#employee_<%= @employee.id %>')[0].cells[4] = "<%= @employee.clocked_in.present? ? @employee.clocked_in => '1' : @employee.clocked_in => '0' %>"
+
+
+
+//var name_input = $('#employee_name').val()
+//$('#name_column_2894') = name_input
+
+
+
+// Adding values ufter updating any value
+
+// DECLARES VARIABLE TO BE USED ON FULL TOTAL 
+//var total_clocked_in = parseInt(total_office_text, 10) + parseInt(total_supertemps_text, 10) + parseInt(total_warehouse_ice_text, 10) 
+//+ parseInt(total_covid_champion_text, 10) + parseInt(total_hygiene_sani_text, 10) + parseInt(total_stock_coordinator_text, 10) + parseInt(total_booked_new_text, 10)
+//+ parseInt(total_replenisher_text, 10) + parseInt(total_booked_text, 10)
+
+
+
+
+
+
+//('<%= j render @employee %>')
+//$("#employee_<%= @employee.id %>").fadeOut(500, function() {
+//  $(this).remove();
+//  $("tbody").prepend('<%= j render @employee %>')
+//  location.reload() 
+//})
+
+
+
+
+
+
+
+
+// "parseInt($('#total_production')[0].innerText, 10) + 1"
+//} else {
+//  $('#total_production')[0].innerText = "parseInt($('#total_production')[0].innerText, 10) - 1"
+//}
+
+//function countBookedIn() {
+//  var x = document.getElementById('total_production').innerHTML
+//  let totalBookedIn = parseInt(x,10) + 1
+//  return totalBookedIn
+//}
+//
+//
+//$document.getElementById('total_production').innerHTML
+//
+//var x = $('#employee_<%= @employee.id %>')[0].
+
+//$('.formCard').remove();
+//$('#new_link').show();
+//
+////$('#edit_employee_<%= @employee.id %>').appendTo('tbody')  
+//$('#edit_employee_<%= @employee.id %>').submitOnCheck();
+//$('<%= j render(@employee) %>').appendTo('tbody') 
+//$('tbody').append('<%= j render(@employee) %>')
+//$('#edit_employee_<%= @employee.id %>').appendTo('tbody')
+//.submitOnCheck();
+//location.reload()  
+
+
+
+
+//Without this reload page I can't see the changes
+
+//$('.edit_employee input[type=checkbox]').remove
+
+
+
+// Old Code
+//$('.formCard').remove();
+//$('#new_link').show();
+//$('tbody').append('<%= j render(@employee) %>')
+//$('#edit_employee_<%= @employee.id %>').submitOnCheck();
+////location.reload() 

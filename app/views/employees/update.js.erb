@@ -6,13 +6,44 @@ $('#new_link').show();
 //var dt = new Date();
 //var time = dt.getHours()+'' + ":" + dt.getMinutes()+'' //+ ":" + dt.getSeconds();
 
+
+$('#employee_<%= @employee.id %>')[0].cells[0].innerHTML = "<%= @employee.name %>"
+$('#employee_<%= @employee.id %>')[0].cells[1].innerHTML = "<%= @employee.surname %>"
+$('#employee_<%= @employee.id %>')[0].cells[2].innerHTML = "<%= @employee.payroll %>"  
+$('#employee_<%= @employee.id %>')[0].cells[3].innerHTML = "<%= @employee.role %>"
+
+
+//var a = $('#edit_employee_<%= @employee.id %> #employee_clocked_in').val()
+//a = "1"
+
+
+
+
+//
+//if ("<%= @employee.clocked_at == '' %>"){
+//	$('#edit_employee_<%= @employee.id %> #employee_clocked_in').prop("checked", false)
+//	 
+//	} else {
+//		, true)
+//	} 
+//	$('#edit_employee_<%= @employee.id %> #employee_clocked_in').prop("checked", true)
+//
+//} else {
+//	$('#edit_employee_<%= @employee.id %> #employee_clocked_in').prop("checked", false)
+//}
+
+
+
+
+
+
+
 $('#employee_<%= @employee.id %>')[0].cells[5].innerHTML = "<%= @employee.clocked_in ? (Time.new).localtime.strftime('%H:%M') : '' %>"  //time; //
+//$('#edit_employee_<%= @employee.id %> #employee_clocked_in .clocked_in_update').prop("checked"
+//$('#employee_<%= @employee.id %>')[0].cells[5].('input[type="checkbox"]').value()
 
-// DECLARES VARIABLE TO BE USED ON FULL TOTAL 
-//var total_clocked_in = parseInt(total_office_text, 10) + parseInt(total_supertemps_text, 10) + parseInt(total_warehouse_ice_text, 10) 
-//+ parseInt(total_covid_champion_text, 10) + parseInt(total_hygiene_sani_text, 10) + parseInt(total_stock_coordinator_text, 10) + parseInt(total_booked_new_text, 10)
-//+ parseInt(total_replenisher_text, 10) + parseInt(total_booked_text, 10)
 
+$('#edit_emplyee_2895 .edit_employee #employee_clocked_in')
 var total_clocked_in_text = $('#total_total')[0].innerText
 var plus_total_clocked_in = parseInt(total_clocked_in_text , 10) + 1;
 var minus_total_clocked_in = parseInt(total_clocked_in_text , 10) - 1
@@ -156,54 +187,4 @@ if (role == "OFFICE"){
 }
 
 
-
-
-
-
-
-
-
-
-
-// "parseInt($('#total_production')[0].innerText, 10) + 1"
-//} else {
-//	$('#total_production')[0].innerText = "parseInt($('#total_production')[0].innerText, 10) - 1"
-//}
-
-//function countBookedIn() {
-//	var x = document.getElementById('total_production').innerHTML
-//	let totalBookedIn = parseInt(x,10) + 1
-//	return totalBookedIn
-//}
-//
-//
-//$document.getElementById('total_production').innerHTML
-//
-//var x = $('#employee_<%= @employee.id %>')[0].
-
-//$('.formCard').remove();
-//$('#new_link').show();
-//
-////$('#edit_employee_<%= @employee.id %>').appendTo('tbody')  
-//$('#edit_employee_<%= @employee.id %>').submitOnCheck();
-//$('<%= j render(@employee) %>').appendTo('tbody') 
-//$('tbody').append('<%= j render(@employee) %>')
-//$('#edit_employee_<%= @employee.id %>').appendTo('tbody')
-//.submitOnCheck();
-//location.reload()  
-
-
-
-
-//Without this reload page I can't see the changes
-
-//$('.edit_employee input[type=checkbox]').remove
-
-
-
-// Old Code
-//$('.formCard').remove();
-//$('#new_link').show();
-//$('tbody').append('<%= j render(@employee) %>')
-//$('#edit_employee_<%= @employee.id %>').submitOnCheck();
-////location.reload() 
+$(".formContainer2").hide()

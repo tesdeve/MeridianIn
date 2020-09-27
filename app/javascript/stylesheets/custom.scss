@@ -56,14 +56,14 @@
   background-color: #00ff58 !important;
 }
 
-.production, .booked_card, .replenisher_card, .booked_new_card, .stock_coordinator_card, .hygiene_sani_card,  .covid_champion_card, .warehouse_ice_card, .supertemps_card, .office_card{
+.production, .booked_card, .replenisher_card, .booked_new_card, .stock_coordinator_card, .hygiene_sani_card,  .covid_champion_card, .warehouse_ice_card, .supertemps_card, .office_card, .total_clocked_in_card{
   font-size: 20px;
   font-weight: 500;
 }
 
 
 .t_booked, .t_replenisher, .t_booked_new, .t_stock_coordinator,
-.t_hygiene_sani, .t_covid_champion, .t_warehouse_ice, .t_supertemps, .t_office {
+.t_hygiene_sani, .t_covid_champion, .t_warehouse_ice, .t_supertemps, .t_office, .t_total_clocked_in  {
   padding-right: 0 !important;
   text-align: right;
 }
@@ -130,7 +130,7 @@ label {
   padding-left: 0 !important;
 }
 
-#total_production, #total_booked, #total_replenisher, #total_booked_new, #total_stock_coordinator, #total_hygiene_sani, #total_covid_champion, #total_warehouse_ice, #total_supertemps, #total_office {
+#total_production, #total_booked, #total_replenisher, #total_booked_new, #total_stock_coordinator, #total_hygiene_sani, #total_covid_champion, #total_warehouse_ice, #total_supertemps, #total_office, #total_total {
   padding-right: 0 !important;
   text-align: right;
 }

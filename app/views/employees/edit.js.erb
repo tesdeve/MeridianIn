@@ -1,8 +1,9 @@
 
 
-$('#new_link').hide().after('<%= j render("form") %>')
-//$("html, body").animate({ scrollTop: 900 }, "1500");
+$('#new_link').hide().after('<%= j render("form_update") %>')
+$('html, body').animate({scrollTop:$('.formCard').position().top}, 'slow');
 
+//$("html, body").animate({ scrollTop: 900 }, "1500");
 
 
 //$('.formCard').remove();
