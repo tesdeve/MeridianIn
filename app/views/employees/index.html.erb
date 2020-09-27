@@ -125,52 +125,46 @@
     </div>
   </div>
 
-
-
-
- <div class="row col-12 separate-top2 justify-content-center">
-
-    <div class="card col-3 ml-5 warehouse_ice_card">
-      <div class="row py-3 ">
-        <div class= "col-6 t_warehouse_ice">Warehouse & ICE:</div>
-          <div class= "col-2 px-0" id="total_warehouse_ice"><%= @employees.where({role: "WAREHOUSE STAFF", clocked_in: true}).count +  @employees.where({role: "Ice", clocked_in: true}).count %></div> 
-            <div>/<%= @employees.where({role: "WAREHOUSE STAFF"}).count +  @employees.where({role: "ICE"}).count %></div>
-      </div> 
-    </div>
-
-  <div class="card col-3 ml-5 supertemps_card">
-    <div class="row py-3 ">
-      <div class= "col-6 t_supertemps">Supertemps:</div>
-        <div class= "col-2 px-0" id="total_supertemps"><%= @employees.where({role: "SUPERTEMP", clocked_in: true}).count %></div>
-          <div>/<%= @employees.where({role: "SUPERTEMP"}).count %></div>
-    </div>
+  <div class="row col-12 separate-top2 justify-content-center">
+      <div class="card col-3 ml-5 warehouse_ice_card">
+        <div class="row py-3 ">
+          <div class= "col-6 t_warehouse_ice">Warehouse & ICE:</div>
+            <div class= "col-2 px-0" id="total_warehouse_ice"><%= @employees.where({role: "WAREHOUSE STAFF", clocked_in: true}).count +  @employees.where({role: "Ice", clocked_in: true}).count %></div> 
+              <div>/<%= @employees.where({role: "WAREHOUSE STAFF"}).count +  @employees.where({role: "ICE"}).count %></div>
+        </div> 
+      </div>
+      <div class="card col-3 ml-5 supertemps_card">
+        <div class="row py-3 ">
+          <div class= "col-6 t_supertemps">Supertemps:</div>
+            <div class= "col-2 px-0" id="total_supertemps"><%= @employees.where({role: "SUPERTEMP", clocked_in: true}).count %></div>
+              <div>/<%= @employees.where({role: "SUPERTEMP"}).count %></div>
+        </div>
+      </div>
+      <div class="card col-3 ml-5 office_card">
+        <div class="row py-3 ">
+          <div class= "col-6 t_office">Office-Admin:</div>
+            <div class= "col-2 px-0" id="total_office"><%= @employees.where({role: "OFFICE", clocked_in: true}).count %></div>
+            <div>/<%= @employees.where({role: "OFFICE"}).count %></div>
+        </div>
+      </div>
   </div>
-
-  <div class="card col-3 ml-5 office_card">
-    <div class="row py-3 ">
-      <div class= "col-6 t_office">Office-Admin:</div>
-        <div class= "col-2 px-0" id="total_office"><%= @employees.where({role: "OFFICE", clocked_in: true}).count %></div>
-        <div>/<%= @employees.where({role: "OFFICE"}).count %></div>
-    </div>
-  </div>
-</div>
 
 <div class="row col-12 separate-top2 justify-content-center">
-  <div class="card col-3 ml-5">
+  <div class="card col-3 ml-5 total_clocked_in_card">
     <div class="row py-3 ">
-    <div class= "col-6 t_total"> Total Clocked In:</div>
-    <div class= "col-2 px-0" id="total_total"> <%= @employees.where({clocked_in: true}).count %> </div>
+      <div class= "col-6 t_total t_total_clocked_in"> Total Clocked In:</div>
+        <div class= "col-2 px-0" id="total_total"> <%= @employees.where({clocked_in: true}).count %> </div>
+    </div>
   </div>
 </div>
 
-</div>
   <%#= @employees.where({role: "Supertemp", clocked_in: true}).count %>
 <hr class='my-5' id='linkEmployee'>
 
 <div class="tablesideSpaces"> 
-  <!-- <div class="marginBottom">
-    <%#= link_to 'New Employee', new_employee_path, id: "new_link", remote: true %>
-  </div>  -->
+   <div class="marginBottom">
+    <%= link_to 'Add Temp', new_employee_path, id: "new_link", remote: true %>
+  </div>  
 
 <!-- <%#= form_tag employees_path, :method => :get do %>
   <p>
