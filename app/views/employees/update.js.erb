@@ -3,7 +3,10 @@ $('#new_link').show();
 //$('tbody').append('<%= j render(@employee) %>')
 //$('#employee_<%= @employee.id %>')//.submitOnCheck();
 //location.reload()
-$('#employee_<%= @employee.id %>')[0].cells[5].innerHTML =  " <%= @employee.clocked_in ? (Time.new).localtime.strftime('%H:%M') : '' %>"
+var dt = new Date();
+var time = dt.getHours()+'' + ":" + dt.getMinutes()+'' //+ ":" + dt.getSeconds();
+
+$('#employee_<%= @employee.id %>')[0].cells[5].innerHTML = time; //"<%= @employee.clocked_in ? (Time.new).localtime.strftime('%H:%M') : '' %>"
 
 // DECLARES VARIABLE TO BE USED ON FULL TOTAL 
 //var total_clocked_in = parseInt(total_office_text, 10) + parseInt(total_supertemps_text, 10) + parseInt(total_warehouse_ice_text, 10) 
