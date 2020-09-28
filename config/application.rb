@@ -45,7 +45,7 @@ module ImportExcel
     config.generators.system_tests = nil
 
     # Sets Time Zone
-    config.time_zone = 'London'
+    config.time_zone = 'Rome'
     config.active_record.default_timezone = :local
   end
 end

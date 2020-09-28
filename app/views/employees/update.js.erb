@@ -38,7 +38,7 @@ $('#employee_<%= @employee.id %>')[0].cells[3].innerHTML = "<%= @employee.role %
 
 
 
-$('#employee_<%= @employee.id %>')[0].cells[5].innerHTML = "<%= @employee.clocked_in ? (Time.new.localtime + 3600 ).strftime('%H:%M') : '' %>"  //time; //
+$('#employee_<%= @employee.id %>')[0].cells[5].innerHTML = "<%= @employee.clocked_in ? (Time.new).strftime('%H:%M') : '' %>"  //.localtimetime; //
 //$('#edit_employee_<%= @employee.id %> #employee_clocked_in .clocked_in_update').prop("checked"
 //$('#employee_<%= @employee.id %>')[0].cells[5].('input[type="checkbox"]').value()
 
