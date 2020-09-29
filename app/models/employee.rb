@@ -29,6 +29,15 @@ class Employee < ApplicationRecord
     self.status ||= 0
   end
 
+  #before_save :set_cloked_at
+  #def set_cloked_at
+  #  if self.clocked_in == true
+  #    self.clocked_at = Time.now
+  #  else
+  #    self.clocked_at = false
+  #  end
+  #end
+
   after_save :delete_duplicates
   def delete_duplicates
     employees = Employee.all.group_by{|employee| [employee.name, employee.surname, employee.payroll, employee.role]} #, employee.telephone
