@@ -24,7 +24,7 @@
 
  
   <% end %>
-<td><%= employee.clocked_at == nil ? "" : employee.clocked_at.localtime.strftime('%H:%M') %></td>
+<td id="time_in_<%=employee.id %>"><%= employee.clocked_at == nil ? "" : employee.clocked_at.localtime.strftime('%H:%M') %></td>
 
   <!-- <td><%#= employee.status.titleize %></td> -->
     
