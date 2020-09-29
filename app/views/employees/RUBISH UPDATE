@@ -1,0 +1,126 @@
+//$('#employee_<%= @employee.id %>')[0].cells[4] = "<%= @employee.clocked_in.present? ? @employee.clocked_in => '1' : @employee.clocked_in => '0' %>"
+
+
+
+//var name_input = $('#employee_name').val()
+//$('#name_column_2894') = name_input
+
+
+
+// Adding values ufter updating any value
+
+// DECLARES VARIABLE TO BE USED ON FULL TOTAL 
+//var total_clocked_in = parseInt(total_office_text, 10) + parseInt(total_supertemps_text, 10) + parseInt(total_warehouse_ice_text, 10) 
+//+ parseInt(total_covid_champion_text, 10) + parseInt(total_hygiene_sani_text, 10) + parseInt(total_stock_coordinator_text, 10) + parseInt(total_booked_new_text, 10)
+//+ parseInt(total_replenisher_text, 10) + parseInt(total_booked_text, 10)
+
+
+
+
+
+
+//('<%= j render @employee %>')
+//$("#employee_<%= @employee.id %>").fadeOut(500, function() {
+//  $(this).remove();
+//  $("tbody").prepend('<%= j render @employee %>')
+//  location.reload() 
+//})
+
+
+//////////////////////////////////////////////////////////////////////////
+
+
+
+//var a = $('#edit_employee_<%= @employee.id %> #employee_clocked_in').val()
+//a = "1"
+
+
+
+
+//
+//if ("<%= @employee.clocked_at == '' %>"){
+//  $('#edit_employee_<%= @employee.id %> #employee_clocked_in').prop("checked", false)
+//   
+//  } else {
+//    , true)
+//  } 
+//  $('#edit_employee_<%= @employee.id %> #employee_clocked_in').prop("checked", true)
+//
+//} else {
+//  $('#edit_employee_<%= @employee.id %> #employee_clocked_in').prop("checked", false)
+//}
+
+//$('#employee_<%= @employee.id %>')[0].cells[5].innerHTML = "<%= @employee.clocked_in ? (Time.now.strftime('%H:%M') : '' %>"  
+//
+//
+//var today = new Date();
+////var a = $("#time_in_<%= @employee.id %>").text()
+//var curr_hour = today.getHours();
+//var curr_min = today.getMinutes();
+//curr_min = curr_min + "";
+//
+//if (curr_min.length == 1)
+//   {
+//   curr_min = "0" + curr_min;
+//   }
+////
+////document.write(curr_hour + " : " + curr_min);
+// if ("<% @employee.clocked_in %>"){ 
+//  $('#employee_<%= @employee.id %>')[0].cells[5].innerHTML = curr_hour + ':' + curr_min // (today.getHours() + ':' + today.getMinutes()) //$("#time_in_<%= @employee.id %>").html( today.getHours() + ':' + today.getMinutes());//"<%= @employee.clocked_in ? Time.current.strftime('%H:%M') : '' %>"  //.localtimetime; //
+// } else {
+//  $('#employee_<%= @employee.id %>')[0].cells[5].innerHTML = '' 
+//}
+////$('#edit_employee_<%= @employee.id %> #employee_clocked_in .clocked_in_update').prop("checked"
+//$('#employee_<%= @employee.id %>')[0].cells[5].('input[type="checkbox"]').value()
+//$('#edit_emplyee_2895 .edit_employee #employee_clocked_in')
+//
+
+
+//////////////////////////////////////////////////////////////////
+
+
+
+
+
+// "parseInt($('#total_production')[0].innerText, 10) + 1"
+//} else {
+//  $('#total_production')[0].innerText = "parseInt($('#total_production')[0].innerText, 10) - 1"
+//}
+
+//function countBookedIn() {
+//  var x = document.getElementById('total_production').innerHTML
+//  let totalBookedIn = parseInt(x,10) + 1
+//  return totalBookedIn
+//}
+//
+//
+//$document.getElementById('total_production').innerHTML
+//
+//var x = $('#employee_<%= @employee.id %>')[0].
+
+//$('.formCard').remove();
+//$('#new_link').show();
+//
+////$('#edit_employee_<%= @employee.id %>').appendTo('tbody')  
+//$('#edit_employee_<%= @employee.id %>').submitOnCheck();
+//$('<%= j render(@employee) %>').appendTo('tbody') 
+//$('tbody').append('<%= j render(@employee) %>')
+//$('#edit_employee_<%= @employee.id %>').appendTo('tbody')
+//.submitOnCheck();
+//location.reload()  
+
+
+
+
+//Without this reload page I can't see the changes
+
+//$('.edit_employee input[type=checkbox]').remove
+
+
+
+// Old Code
+//$('.formCard').remove();
+//$('#new_link').show();
+//$('tbody').append('<%= j render(@employee) %>')
+//$('#edit_employee_<%= @employee.id %>').submitOnCheck();
+////location.reload() 

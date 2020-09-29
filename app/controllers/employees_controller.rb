@@ -1,6 +1,7 @@
 class EmployeesController < ApplicationController
   before_action :set_employee, only: [:show, :edit, :update, :destroy]
-
+ skip_forgery_protection
+ 
   def import
     Employee.import(params[:file])
     redirect_to root_url, notice: "Employees imported."
@@ -8,6 +9,24 @@ class EmployeesController < ApplicationController
 
   # GET /employees
   # GET /employees.json
+
+
+
+
+#def index
+#  @search = EMployee.search do
+#    fulltext params[:search]
+#    with(:published_at).less_than(Time.zone.now)
+#    facet(:publish_month)
+#    with(:publish_month, params[:month]) if params[:month].present?
+#  end
+#  @employees = @search.results
+#end
+
+
+
+
+
   def index
     total_production
     @employees = Employee.all.order(:surname)
@@ -40,6 +59,7 @@ class EmployeesController < ApplicationController
       format.js
     end
   end
+  
 
   # GET /employees/1/edit
   def edit
@@ -114,8 +134,11 @@ class EmployeesController < ApplicationController
       @employee = Employee.find(params[:id])
     end
 
+
     # Only allow a list of trusted parameters through.
     def employee_params
+
       params.require(:employee).permit(:name, :surname, :role, :payrole, :telephone, :status, :clocked_in, :clocked_at)
+
     end
 end
