@@ -24,13 +24,13 @@
 
  
   <% end %>
-<td><%= employee.clocked_at == nil ? "" : employee.clocked_at.strftime('%H:%M') %></td>
+<td><%= employee.clocked_at == nil ? "" : employee.clocked_at.localtime.strftime('%H:%M') %></td>
 
   <!-- <td><%#= employee.status.titleize %></td> -->
     
  <!--  <td><%#= employee.clocked_at == nil ? "" : employee.clocked_at.strftime('%H:%M') %></td>  -->
 
-  <td><%= link_to 'Show', employee %></td>
+  <!-- <td><%#= link_to 'Show', employee %></td> -->
   <td><%= link_to 'Edit', edit_employee_path(employee), remote: true, id: "editEmployeelink" %></td> 
   <!-- <td><%#= link_to 'Destroy', employee, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
 </tr>
