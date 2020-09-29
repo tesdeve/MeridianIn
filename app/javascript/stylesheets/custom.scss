@@ -4,14 +4,6 @@
 }
 
 
-
-
-
-
-
-
-
-
 .alert-success {
   color: #062b0f;
   background-color: #10f55f !important;
@@ -147,4 +139,109 @@ label {
 #total_production, #total_booked, #total_replenisher, #total_booked_new, #total_stock_coordinator, #total_hygiene_sani, #total_covid_champion, #total_warehouse_ice, #total_supertemps, #total_office, #total_total {
   padding-right: 0 !important;
   text-align: right;
+
+}
+
+
+
+/*---Media Queries --*/
+
+/*--- Portrait ---*/
+@media (max-width: 414px) and (orientation : portrait) { 
+
+}
+
+
+@media (min-width: 768px)  and (orientation : portrait) {
+  
+}
+
+@media (max-width: 768px)  and (orientation : portrait) {
+
+  .replenisher_card, .hygiene_sani_card, .supertemps_card {
+      margin-right: 2%;
+      margin-left: 2%;
+  }
+
+  .total_prod_title, #total_production, .allBooked, .t_booked, #total_booked, .total_booked, .t_replenisher, #total_replenisher, .total_replenisher, .t_booked_new, #total_booked_new, .total_booked_new, .t_stock_coordinator, #total_stock_coordinator, .total_stock_coordinator, .t_hygiene_sani, #total_hygiene_sani, .total_hygiene_sani, .t_covid_champion, #total_covid_champion, .total_covid_champion, .t_warehouse_ice, #total_warehouse_ice, .total_warehouse_ice, .t_supertemps, #total_supertemps, .total_supertemps, .t_office, #total_office, .total_office, .t_total_clocked_in, #total_total, .total_of_totals   {
+    font-size: 1rem !important;
+  }
+
+}
+
+@media (max-width: 375px) and (orientation : portrait) { 
+  .contractorsTitle {
+      font-Size: 2rem !important;
+  }
+
+  .total_prod_title, #total_production, .allBooked, .t_booked, #total_booked, .total_booked, .t_replenisher, #total_replenisher, .total_replenisher, .t_booked_new, #total_booked_new, .total_booked_new, .t_stock_coordinator, #total_stock_coordinator, .total_stock_coordinator, .t_hygiene_sani, #total_hygiene_sani, .total_hygiene_sani, .t_covid_champion, #total_covid_champion, .total_covid_champion, .total_warehouse_ice, #total_warehouse_ice, .total_warehouse_ice, .t_supertemps, #total_supertemps, .total_supertemps, .t_office, #total_office, .total_office, .t_total_clocked_in, #total_total, .total_of_totals   {
+    font-size: 1rem !important;
+  }
+
+  .production {
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+
+  .separate-top2, .separate-top {
+    padding-right: 0 !important;
+  }
+  .booked_card, .replenisher_card, .booked_new_card, .stock_coordinator_card, .hygiene_sani_card, .covid_champion_card, .warehouse_ice_card, .supertemps_card, .office_card, .total_clocked_in_card
+  {
+    margin-left: 5%;
+    margin-right: 1%;
+    margin-top: 1rem;
+  } 
+}
+@media (max-width: 360px) and (orientation : portrait) {  
+
+}
+@media (min-width: 1020px) { 
+  
+}
+
+@media (min-width: 576px){
+
+}
+/*--- LandScape ---*/
+@media (min-width: 1100px) and (orientation: landscape){
+  
+}
+
+@media (min-width: 825px)  and (orientation : landscape){
+//.separate-top2, .separate-top {
+//    flex: 0 0 100%;
+//    max-width: 90% !important;
+//    margin-left: 5% !important;
+//  }
+
+
+  .separate-top, .separate-top2 {
+    max-width: 90% !important;
+    margin-left: 5% !important;
+}
+
+
+
+}
+@media (max-width: 736px)  and (orientation : landscape){
+  .production {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+    margin-left: 3%;
+    margin-right: 4%;
+  }
+
+  .separate-top, .separate-top2{
+    margin-left: 5% !important;
+    margin-right: -10% !important;
+    max-width: 90% !important;
+  }
+}
+@media (max-width: 667px)  and (orientation : landscape){ 
+  
+}
+
+@media (max-width: 568px)  and (orientation : landscape){
+
 }

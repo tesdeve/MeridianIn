@@ -4,6 +4,7 @@ window.checkInChange = function(item){
 	//alert("OE!")
 }
 
+
 // FROM HERE
 
 ///jQuery.fn.submitOnCheck = function() { 
@@ -67,3 +68,4 @@ window.checkInChange = function(item){
 		//$(this).parent('form').submit();
 
 		//alert("Updated!!");
+>>>>>>> master

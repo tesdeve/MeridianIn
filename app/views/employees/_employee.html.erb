@@ -20,11 +20,20 @@
               <%#= f.hidden_field :clocked_at, :value => """" %> 
     <% end %></td>
 
+<<<<<<< HEAD
+   <td id="time_in_<%=employee.id %>"><%= employee.updated_at.strftime('%H:%M') %></td> 
+
+ 
+  <% end %>
+
+<!-- <td id="time_in_<%=employee.id %>"><%#= employee.clocked_at == nil ? "" : employee.clocked_at.strftime('%H:%M') %></td> -->
+=======
   <!-- <td><%#= employee.updated_at.strftime('%H:%M') %></td>  -->
 
  
   <% end %>
 <td id="time_in_<%=employee.id %>"><%= employee.clocked_at == nil ? "" : employee.clocked_at.strftime('%H:%M') %></td>
+>>>>>>> master
 
   <!-- <td><%#= employee.status.titleize %></td> -->
     

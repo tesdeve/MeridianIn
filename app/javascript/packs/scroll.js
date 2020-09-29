@@ -32,17 +32,6 @@ $(document).ready(function(){
  	});
 
 
-	///////////////////////////////////////////
-
-
-
-// Will Bontrager Software, LLC
-// https://www.willmaster.com
-// December 20, 2014
-
-
-
-
 
 
 
