@@ -1,41 +1,54 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @employee.name %>
-</p>
+<div class="card showCard my-5 ">
+  <div class="card-body">
+    <div clas='formContainer'>
 
-<p>
-  <strong>Surname:</strong>
-  <%= @employee.surname %>
-</p>
+      <p>
+        <strong>Name:</strong>
+        <%= @employee.name.titleize %>
+      </p>
 
-<p>
-  <strong>Role:</strong>
-  <%= @employee.role %>
-</p>
+      <p>
+        <strong>Surname:</strong>
+        <%= @employee.surname.titleize %>
+      </p>
 
-<p>
-  <strong>Payroll:</strong>
-  <%= @employee.payroll %>
-</p>
+      <p>
+        <strong>Role:</strong>
+        <%= @employee.role.titleize  %>
+      </p>
 
-<p>
-  <strong>Telephone:</strong>
-  <%= @employee.telephone %>
-</p>
+      <p>
+        <strong>Payroll:</strong>
+        <%= @employee.payroll %>
+      </p>
+
+      <p>
+        <strong>Telephone:</strong>
+        <%= @employee.telephone %>
+      </p>
+
+      <p>
+        <strong>Clock In:</strong>
+        <%= @employee.clocked_in == false ? 'No' : 'Yes'  %>
+      </p>
+
+      <p>
+        <strong>Status:</strong>
+        <%= @employee.status.titleize %>
+      </p>
+
+      <p>
+        <strong>Clocked At:</strong>
+        <%= @employee.clocked_at.present? ? @employee.clocked_at.strftime('%H:%M') : 'No clocked yet'%>
+      </p>
 
 
-<p>
-  <strong>Status:</strong>
-  <%= @employee.status.upcase %>
-</p>
+      <%#= link_to 'Edit', edit_employee_path(@employee) %> 
+      <%= link_to 'Back', employees_path %>
 
-<p>
-  <strong>Clocked At:</strong>
-  <%= @employee.clocked_at %>
-</p>
+    </div>
+  </div>
+</div>
 
-
-<%= link_to 'Edit', edit_employee_path(@employee) %> |
-<%= link_to 'Back', employees_path %>

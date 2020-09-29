@@ -2,8 +2,11 @@ Rails.application.routes.draw do
 
   root "employees#index"
   resources :employees do
-    collection { post :import }
+    collection { post :import
+               delete 'remove_all'}
   end  
+
+  get 'search', to: 'employees#search' 
 end
 
 

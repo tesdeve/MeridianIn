@@ -1,0 +1,11 @@
+$('.formCard').remove();
+$('#new_link').show();
+$('tbody').append('<%= j render(@employee) %>')
+$('#edit_employee_<%= @employee.id %>').submitOnCheck();
+//location.reload(); // At the moment his can be left or removed in this create action 
+
+
+//$('.formCard').remove();
+//$('#new_link').show();
+//alert("Employee Created")
+//$('.newadded').append('<%= j render(@employee) %>');//

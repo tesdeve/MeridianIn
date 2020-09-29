@@ -1,0 +1,159 @@
+$('.formCard').remove();
+$('#new_link').show();
+//$('tbody').append('<%= j render(@employee) %>')
+//$('#employee_<%= @employee.id %>')//.submitOnCheck();
+//location.reload()
+//var dt = new Date();
+//var time = dt.getHours()+'' + ":" + dt.getMinutes()+'' //+ ":" + dt.getSeconds();
+
+
+$('#employee_<%= @employee.id %>')[0].cells[0].innerHTML = "<%= @employee.name %>"
+$('#employee_<%= @employee.id %>')[0].cells[1].innerHTML = "<%= @employee.surname %>"
+$('#employee_<%= @employee.id %>')[0].cells[2].innerHTML = "<%= @employee.payroll %>"  
+$('#employee_<%= @employee.id %>')[0].cells[3].innerHTML = "<%= @employee.role %>"
+$('#employee_<%= @employee.id %>')[0].cells[5].innerHTML = "<%= @employee.clocked_in ? Time.now.strftime('%H:%M') : '' %>"  
+
+var total_clocked_in_text = $('#total_total')[0].innerText
+var plus_total_clocked_in = parseInt(total_clocked_in_text , 10) + 1;
+var minus_total_clocked_in = parseInt(total_clocked_in_text , 10) - 1
+
+var total_production_text = $('#total_production')[0].innerText;
+var plus_total_production_value = parseInt(total_production_text, 10) + 1;
+var minus_total_production_value = parseInt(total_production_text, 10) - 1;
+
+
+var role = $('#employee_<%= @employee.id %> #role')[0].innerText
+// Updates total_production as a checkbox is clicked
+if (role == "BOOKED" || role == "BOOKED NEW" || role == "REPLENISHER") {
+  if( $('#employee_<%= @employee.id %> #employee_clocked_in').prop('checked')) {
+    $('#total_production')[0].innerText = plus_total_production_value;
+    $('#total_total')[0].innerText = plus_total_clocked_in;
+  } else {
+     $('#total_production')[0].innerText =  minus_total_production_value;
+     $('#total_total')[0].innerText = minus_total_clocked_in
+  }
+}
+
+var total_booked_text = $('#total_booked')[0].innerText
+var plus_total_booked_value = parseInt(total_booked_text, 10) + 1;
+var minus_total_booked_value = parseInt(total_booked_text, 10) - 1;
+if (role == "BOOKED"){
+  if( $('#employee_<%= @employee.id %> #employee_clocked_in').prop('checked')) {
+    $('#total_booked')[0].innerText = plus_total_booked_value;
+    $('#total_total')[0].innerText = plus_total_clocked_in;
+  } else {
+     $('#total_booked')[0].innerText =  minus_total_booked_value;
+     $('#total_total')[0].innerText = minus_total_clocked_in
+  }
+}
+
+var total_replenisher_text = $('#total_replenisher')[0].innerText
+var plus_total_replenisher_value = parseInt(total_replenisher_text, 10) + 1;
+var minus_total_replenisher_value = parseInt(total_replenisher_text, 10) - 1;
+if (role == "REPLENISHER"){
+  if( $('#employee_<%= @employee.id %> #employee_clocked_in').prop('checked')) {
+    $('#total_replenisher')[0].innerText = plus_total_replenisher_value;
+    $('#total_total')[0].innerText = plus_total_clocked_in;
+  } else {
+    $('#total_replenisher')[0].innerText =  minus_total_replenisher_value;
+    $('#total_total')[0].innerText = minus_total_clocked_in
+  }
+}
+
+var total_booked_new_text = $('#total_booked_new')[0].innerText
+var plus_total_booked_new_value = parseInt(total_booked_new_text, 10) + 1;
+var minus_total_booked_new_value = parseInt(total_booked_new_text, 10) - 1;
+if (role == "BOOKED NEW"){
+  if( $('#employee_<%= @employee.id %> #employee_clocked_in').prop('checked')) {
+    $('#total_booked_new')[0].innerText = plus_total_booked_new_value;
+    $('#total_total')[0].innerText = plus_total_clocked_in;
+  } else {
+    $('#total_booked_new')[0].innerText =  minus_total_booked_new_value;
+    $('#total_total')[0].innerText = minus_total_clocked_in
+  }
+}
+
+
+var total_stock_coordinator_text = $('#total_stock_coordinator')[0].innerText
+var plus_total_stock_coordinator_value = parseInt(total_stock_coordinator_text, 10) + 1;
+var minus_total_stock_coordinator_value = parseInt(total_stock_coordinator_text, 10) - 1;
+if (role == "STOCK COORDINATOR"){
+  if( $('#employee_<%= @employee.id %> #employee_clocked_in').prop('checked')) {
+    $('#total_stock_coordinator')[0].innerText = plus_total_stock_coordinator_value;
+    $('#total_total')[0].innerText = plus_total_clocked_in;
+  } else {
+    $('#total_stock_coordinator')[0].innerText =  minus_total_stock_coordinator_value;
+    $('#total_total')[0].innerText = minus_total_clocked_in
+  }
+}
+
+
+var total_hygiene_sani_text = $('#total_hygiene_sani')[0].innerText
+var plus_total_hygiene_sani_value = parseInt(total_hygiene_sani_text, 10) + 1;
+var minus_total_hygiene_sani_value = parseInt(total_hygiene_sani_text, 10) - 1;
+if (role == "HYGIENE/SANI"){
+  if( $('#employee_<%= @employee.id %> #employee_clocked_in').prop('checked')) {
+    $('#total_hygiene_sani')[0].innerText = plus_total_hygiene_sani_value;
+    $('#total_total')[0].innerText = plus_total_clocked_in;
+  } else {
+    $('#total_hygiene_sani')[0].innerText =  minus_total_hygiene_sani_value;
+    $('#total_total')[0].innerText = minus_total_clocked_in
+  }
+}
+
+
+var total_covid_champion_text = $('#total_covid_champion')[0].innerText
+var plus_total_covid_champion_value = parseInt(total_covid_champion_text, 10) + 1;
+var minus_total_covid_champion_value = parseInt(total_covid_champion_text, 10) - 1;
+if (role == "COVID CHAMPION"){
+  if( $('#employee_<%= @employee.id %> #employee_clocked_in').prop('checked')) {
+    $('#total_covid_champion')[0].innerText = plus_total_covid_champion_value;
+    $('#total_total')[0].innerText = plus_total_clocked_in;
+  } else {
+    $('#total_covid_champion')[0].innerText =  minus_total_covid_champion_value;
+    $('#total_total')[0].innerText = minus_total_clocked_in
+  }
+}
+
+var total_warehouse_ice_text = $('#total_warehouse_ice')[0].innerText
+var plus_total_warehouse_ice_value = parseInt(total_warehouse_ice_text, 10) + 1;
+var minus_total_warehouse_ice_value = parseInt(total_warehouse_ice_text, 10) - 1;
+if (role == "WAREHOUSE STAFF" || role == "ICE"){
+  if( $('#employee_<%= @employee.id %> #employee_clocked_in').prop('checked')) {
+    $('#total_warehouse_ice')[0].innerText = plus_total_warehouse_ice_value;
+    $('#total_total')[0].innerText = plus_total_clocked_in;
+  } else {
+    $('#total_warehouse_ice')[0].innerText =  minus_total_warehouse_ice_value;
+    $('#total_total')[0].innerText = minus_total_clocked_in
+  }
+}
+
+
+var total_supertemps_text = $('#total_supertemps')[0].innerText
+var plus_total_supertemps_value = parseInt(total_supertemps_text, 10) + 1;
+var minus_total_supertemps_value = parseInt(total_supertemps_text, 10) - 1;
+if (role == "SUPERTEMP"){
+  if( $('#employee_<%= @employee.id %> #employee_clocked_in').prop('checked')) {
+    $('#total_supertemps')[0].innerText = plus_total_supertemps_value;
+    $('#total_total')[0].innerText = plus_total_clocked_in;
+  } else {
+    $('#total_supertemps')[0].innerText =  minus_total_supertemps_value;
+    $('#total_total')[0].innerText = minus_total_clocked_in
+  }
+}
+
+var total_office_text = $('#total_office')[0].innerText
+var plus_total_office_value = parseInt(total_office_text, 10) + 1;
+var minus_total_office_value = parseInt(total_office_text, 10) - 1;
+if (role == "OFFICE"){
+  if( $('#employee_<%= @employee.id %> #employee_clocked_in').prop('checked')) {
+    $('#total_office')[0].innerText = plus_total_office_value;
+    $('#total_total')[0].innerText = plus_total_clocked_in;
+  } else {
+    $('#total_office')[0].innerText =  minus_total_office_value;
+    $('#total_total')[0].innerText = minus_total_clocked_in
+  }
+}
+
+
+$(".formContainer2").hide()

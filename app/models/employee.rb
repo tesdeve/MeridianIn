@@ -1,29 +1,46 @@
 class Employee < ApplicationRecord
-  
   require 'roo'
 
-  def self.accessible_attributes 
-    ['name', 'surname', 'payroll', 'role', 'telephone']
+  def self.to_csv(options = {})
+    CSV.generate(options) do |csv|
+    #CSV.generate do |csv|
+      csv << column_names
+      all.each do |employee|
+        csv << employee.attributes.values_at(*column_names)
+      end
+    end
   end
 
-  enum status: {booked: 0, clocked_In:1, dna:2 }
+
+  def self.accessible_attributes 
+    ['name', 'surname', 'payroll', 'role']  #, 'telephone'
+  end
+
+#searchable do
+#  text :name
+#  text :surname, :boost => 5
+#  text :payroll  
+#end
+
+  enum status: {Booked: 0, Clocked_In:1, DNA:2 }
 
   before_create :set_create_attributes
   def set_create_attributes
     self.status ||= 0
   end
 
-  before_save :set_clocked_at
-  def set_clocked_at
-    if self.status == "clocked_In"
-      self.clocked_at = Time.now
-    end
-  end
+  #before_save :set_cloked_at
+  #def set_cloked_at
+  #  if self.clocked_in == true
+  #    self.clocked_at = Time.now
+  #  else
+  #    self.clocked_at = false
+  #  end
+  #end
 
   after_save :delete_duplicates
   def delete_duplicates
-    employees = Employee.all.group_by{|employee| [employee.name, employee.surname, employee.payroll, 
-                                      employee.role, employee.telephone]}
+    employees = Employee.all.group_by{|employee| [employee.name, employee.surname, employee.payroll, employee.role]} #, employee.telephone
     employees.values.each do |duplicates|  
     #the first one we want to keep right?
        first_one = duplicates.shift # or pop for last one
@@ -42,10 +59,10 @@ class Employee < ApplicationRecord
      employee.attributes = row.to_hash.slice(*accessible_attributes)
      # strip any leading and trailing whitespace from the inputs
      # also add the to_s method in case there is any  nil variable or any other type different form string
-     employee.name = employee.name.to_s.strip
-     employee.surname = employee.surname.to_s.strip
-     employee.role = employee.role.to_s.strip 
-     employee.payroll = employee.payroll.to_s.strip
+     employee.name = employee.name.titleize.to_s.strip
+     employee.surname = employee.surname.titleize.to_s.strip
+     employee.role = employee.role.upcase.to_s.strip 
+     employee.payroll = employee.payroll.to_s.upcase.strip
      employee.telephone = employee.telephone.to_s.strip
      employee.save!
    end
@@ -59,6 +76,7 @@ class Employee < ApplicationRecord
     else raise "Unknown file type: #{file.original_filename}"
     end
   end
+
 
 end
 

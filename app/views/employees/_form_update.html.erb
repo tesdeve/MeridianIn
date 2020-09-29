@@ -1,7 +1,7 @@
 <div class="card formCard mt-5 mb-5">
   <div class="card-body">
-    <div clas='formContainer'>
-      <%= form_with(model: @employee, remote: true) do |form| %>
+    <div clas='formContainer formContainer2'>
+      <%= form_with(model: @employee, :method => :put,remote: true) do |form| %>
         <% if @employee.errors.any? %>
           <div id="error_explanation">
             <h2><%= pluralize(@employee.errors.count, "error") %> prohibited this employee from being saved:</h2>
@@ -39,16 +39,16 @@
           <%= form.number_field :telephone, :class => "col-sm-6"  %>
         </div>
 
-        <div class="form-group col-md-12 mb-3">
-          <%= form.label :clocked_in, :class => "col-sm-2" %>
-          <% if @employee.clocked_in == false  %>
-            <%= form.check_box :clocked_in, :class => "col-sm-6" %>      
-            <%= form.hidden_field :clocked_at, :value => Time.now %>
-          <% elsif @employee.clocked_in == true %>
-            <%= form.check_box :clocked_in, :class => "col-sm-6" %>
-            <%= form.hidden_field :clocked_at, :value => nil %>
-          <% end %>
-        </div>
+<!--         <div class="form-group col-md-12 mb-3">
+          <%#= form.label :clocked_in, :class => "col-sm-2" %>
+          <%# if @employee.clocked_in == false  %>
+            <%#= form.check_box :clocked_in, :class => "col-sm-6 clocked_in_update" %>      
+            <%#= form.hidden_field :clocked_at, :value => Time.now %>
+          <%# elsif @employee.clocked_in == true %>
+            <%#= form.check_box :clocked_in, :class => "col-sm-6" %>
+            <%#= form.hidden_field :clocked_at, :value => nil %>
+          <%# end %>
+        </div> -->
           <%#= form.label :clocked_in, :class => "col-sm-2 send-name" %>
           <%#= form.check_box :clocked_in, :class => "col-sm-6 sender-name"  %>  
 
