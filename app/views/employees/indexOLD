@@ -1,3 +1,17 @@
+///////////////////////////////////////////////
+///// Card to show Site in Maintenance \\\\
+<div class="card maintenance">  
+  <h1 class="text-center p-5"> Website on maintenance. </h1>
+  <h3 class="text-center p-5"> Back soon!!</h3>
+</div>
+///////////////////////////////////////////////
+
+
+
+
+////////////////////////////////////////////////
+///// OLD INDEX \\\\
+
 <!-- <div class="notice text-center my-5"> -->
  <!--  <p id="notice noticeIndex "><%= notice %></p>  -->
 
@@ -252,3 +266,4 @@ function ChangeCheckboxLabel(ckbx)
 </div> -->
 
 
+////////////////////////////////////////////////
