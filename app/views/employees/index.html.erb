@@ -1,5 +1,258 @@
-<div class="card maintenance">  
-  <h1 class="text-center p-5"> Website on maintenance </h1>
-  <h3 class="text-center p-5"> Back soon !!</h3>
+
+
+<!-- <div class="notice text-center my-5"> -->
+ <!--  <p id="notice noticeIndex "><%= notice %></p>  -->
+
+<%= render 'layouts/flash_notice_alert' %>
+
+
+<!-- </div> -->
+
+ 
+
+<h1 class="contractorsTitle">Temps Attendance</h1>
+
+<h3 class="text-center py-3"> TIME NOW IS : <%= Time.current.localtime.strftime('%H:%M')  %></h3>
+
+<!-- <H3 class="contractorsTitle">Date : <%#= @employee.first.created_at.DateTime.now.strftime('%m - %B- %y')%> </H3>  -->
+
+<h4 class="contractorsTitle mt-3"><%= @employees.present? ? @employees.first.created_at.strftime('%d - %B- %Y') : "" %> </h4> 
+<hr class="my-5">
+<h3 class="text-center mb-4">Instructions</h3>
+<div class="d-flex justify-content-center mt-4">
+  <input type="checkbox" class="AvGamesCheckBox hideShowInstructions" name="vehicle1" value="Bike">
+
+  <label for="vehicle1"> Hide / Show  Instructions</label>
+</div> 
+<hr>
+
+<div class="row col-12 marginInstructions justify-content-center instructions">
+  <div class="card col-5">
+    
+    <div class="card-body">
+      <h5 class="card-title">Import Contractors</h5>
+      <p class="card-text"> Click the Browse button to select the spreadsheet you wich to import. Once selected click on the Import button. Done!</p>
+      <div class="row my-4">
+        <%= form_tag import_employees_path, multipart: true do %>
+          <%= file_field_tag :file %>
+           
+            <%= submit_tag "Import Contractors", :class => "import mt-4" %>
+          
+        <% end %>
+        <%#= link_to 'Destroy', remove_all, data: { confirm: 'Are you sure?' } %>
+        <%#= link_to 'Destroy', @employees, method: :remove_all, data: { confirm: 'Are you sure?' } %>
+
+       
+      </div>
+    </div>
+  </div>
+
+  <div class="card col-5 separate block1">
+    <div class="card-body">
+      <h5 class="card-title">Export Checked in Contractors</h5>
+      <p class="card-text"> To export this file as a spreadsheet click on the Excel link. Done!</p>
+      <div class="my-4">
+        Download:
+        <%= link_to "Excel", employees_path(format: "xls") %>
+      </div>
+      <p class="card-text"> After you dowload the Temps Attendance as Excel file you can delete it and upload a new one when needed. Simply click the link below. </p>
+       <%= link_to 'Delete List', {:action => :remove_all}, :method => :delete , data: { confirm: 'Are you sure?' }, :class => "mt-4" %>
+    
+    </div>
+  </div>
 </div>
+
+
+<hr class="my-5">
+
+<h3 class="text-center mb-4">Clocked in - Stats</h3>
+
+
+<div class="d-flex justify-content-center mt-4 ">
+  <div class="card col-3 ml-5 production">
+  <%#= link_to "Count", employees_path, :class=>" link_colors_text text-center my-4 "  %>
+    <div class="row py-3 "> 
+      <div class="col-6 text-center"> Total Production: </div>
+        <div class= "col-2 " id="total_production"> <%#= @employees.where({role: "BOOKED", clocked_in: true}).count + @employees.where({role: "REPLENISHER", clocked_in: true}).count + @employees.where({role: "BOOKED NEW", clocked_in: true}).count%> <%= @total_production %></div>
+      <div class= "col-2 allBooked">/<%= @employees.where({role: "BOOKED"}).count + @employees.where({role: "REPLENISHER"}).count + @employees.where({role: "BOOKED NEW"}).count %></div>
+    </div>
+  </div>
+</div>
+
+<div class="information">
+  <div class="row col-12 separate-top justify-content-center ">
+     <div class="card col-3 ml-5 booked_card">
+      <div class="row py-3 "> 
+        <div class= "col-6 t_booked">Total Booked:</div>
+          <div class= "col-2 px-0" id="total_booked"><%= @employees.where({role: "BOOKED", clocked_in: true}).count %></div>
+        <div class= "col-2 pl-0">/<%= @employees.where({role: "BOOKED"}).count %></div>
+      </div>
+    </div>
+    <div class="card col-3 ml-5 replenisher_card">
+      <div class="row py-3 "> 
+         <div class= "col-6 t_replenisher">Replenishers:</div>
+          <div class= "col-2 px-0" id="total_replenisher"><%= @employees.where({role: "REPLENISHER", clocked_in: true}).count %></div>
+         <div class= "col-2 pl-0">/<%= @employees.where({role: "REPLENISHER"}).count %></div>
+      </div>
+    </div>
+    <div class="card col-3 ml-5 booked_new_card">
+     <div class="row py-3 ">
+       <div class= "col-6 t_booked_new">New Starters:</div>
+        <div class= "col-2 px-0" id="total_booked_new"><%= @employees.where({role: "BOOKED NEW", clocked_in: true}).count %></div>
+       <div class= "col-2 pl-0">/<%= @employees.where({role: "BOOKED NEW"}).count %></div>
+     </div>
+   </div> 
+  </div>
+
+
+  <div class="row col-12 separate-top2 justify-content-center">
+    <div class="card col-3 ml-5 stock_coordinator_card">
+      <div class="row py-3 ">
+        <div class= "col-6 t_stock_coordinator">Stock Coordinators:</div>
+          <div class= "col-2 px-0" id="total_stock_coordinator"><%= @employees.where({role: "STOCK COORDINATOR", clocked_in: true}).count %></div>
+        <div class= "col-2 pl-0">/<%= @employees.where({role: "STOCK COORDINATOR"}).count %></div>
+      </div>
+    </div>
+    <div class="card col-3 ml-5 hygiene_sani_card">
+      <div class="row py-3 ">
+        <div class= "col-6 t_hygiene_sani">Hygiene & Sani:</div>
+          <div class= "col-2 px-0" id="total_hygiene_sani"><%= @employees.where({role: "HYGIENE/SANI", clocked_in: true}).count %></div>
+        <div class= "col-2 pl-0">/<%= @employees.where({role: "HYGIENE/SANI"}).count %></div>
+      </div> 
+    </div>
+    <div class="card col-3 ml-5 covid_champion_card">
+      <div class="row py-3 ">
+        <div class= "col-6 t_covid_champion">Covid Champions:</div>
+          <div class= "col-2 px-0" id="total_covid_champion"><%= @employees.where({role: "COVID CHAMPION", clocked_in: true}).count %></div> 
+            <div class= "col-2 pl-0">/<%= @employees.where({role: "COVID CHAMPION"}).count %></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row col-12 separate-top2 justify-content-center">
+      <div class="card col-3 ml-5 warehouse_ice_card">
+        <div class="row py-3 ">
+          <div class= "col-6 t_warehouse_ice">Warehouse & ICE:</div>
+            <div class= "col-2 px-0" id="total_warehouse_ice"><%= @employees.where({role: "WAREHOUSE STAFF", clocked_in: true}).count +  @employees.where({role: "Ice", clocked_in: true}).count %></div> 
+              <div>/<%= @employees.where({role: "WAREHOUSE STAFF"}).count +  @employees.where({role: "ICE"}).count %></div>
+        </div> 
+      </div>
+      <div class="card col-3 ml-5 supertemps_card">
+        <div class="row py-3 ">
+          <div class= "col-6 t_supertemps">Supertemps:</div>
+            <div class= "col-2 px-0" id="total_supertemps"><%= @employees.where({role: "SUPERTEMP", clocked_in: true}).count %></div>
+              <div>/<%= @employees.where({role: "SUPERTEMP"}).count %></div>
+        </div>
+      </div>
+      <div class="card col-3 ml-5 office_card">
+        <div class="row py-3 ">
+          <div class= "col-6 t_office">Office-Admin:</div>
+            <div class= "col-2 px-0" id="total_office"><%= @employees.where({role: "OFFICE", clocked_in: true}).count %></div>
+            <div>/<%= @employees.where({role: "OFFICE"}).count %></div>
+        </div>
+      </div>
+  </div>
+
+<div class="row col-12 separate-top2 justify-content-center">
+  <div class="card col-3 ml-5 total_clocked_in_card">
+    <div class="row py-3 ">
+      <div class= "col-6 t_total t_total_clocked_in"> Total Clocked In:</div>
+        <div class= "col-2 px-0" id="total_total"> <%= @employees.where({clocked_in: true}).count %> </div>
+    </div>
+  </div>
+</div>
+
+  <%#= @employees.where({role: "Supertemp", clocked_in: true}).count %>
+<hr class='my-5' id='linkEmployee'>
+
+<div class="tablesideSpaces"> 
+   <div class="marginBottom">
+    <%= link_to 'Add Temp', new_employee_path, id: "new_link", remote: true %>
+  </div>  
+
+<!-- <%#= form_tag employees_path, :method => :get do %>
+  <p>
+    <%#= text_field_tag :search, params[:search] %>
+    <%#= submit_tag "Search", :name => nil %>
+  </p>
+<%# end %> -->
+
+
+<form class="form-inline my-2 my-lg-0" action="/search">
+  <input class="form-control mr-sm-2" name="q" type="search" placeholder="Search" aria-label="Search">
+  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+</form>
+
+
+
+
+  <div class="table table-responsive mb-5 mt-4"> 
+    <div class="indextable">
+      <table class="table table-hover"> 
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Payroll</th>
+            <th> Job Role</th>
+            <!-- <th>Telephone</th> -->
+            <th class="text-center">Clock In</th>
+            <!-- <th>Status</th> -->
+            <th>Clocked At</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= render @employees %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+<!-- FROM HERE -->
+
+<!-- To Be refined, close to a good solution for toggling label. Missing puttin it together 
+<input type="checkbox" id="my-checkbox" onclick="ChangeCheckboxLabel(this)"> 
+<span id="my-checkbox-checked" style="display:inline; font-weight:bold; color:blue;">Show Instructions</span>
+<span id="my-checkbox-unchecked" style="display:none; font-style:italic; ; color:red;">Hide Instructions</span>
+
+
+Antonio : IT GOES TOGETHER WITH CODE BELOW 
+-->
+<!-- <script>
+function ChangeCheckboxLabel(ckbx)
+{
+   var d = ckbx.id;
+   if( ckbx.checked )
+   {
+      document.getElementById(d+"-checked").style.display = "inline";
+      document.getElementById(d+"-unchecked").style.display = "none";
+   }
+   else
+   {
+      document.getElementById(d+"-checked").style.display = "none";
+      document.getElementById(d+"-unchecked").style.display = "inline";
+   }
+}
+</script> -->
+
+<!-- TO HERE -->
+
+
+
+
+
+<!-- <div class="newadded mb-5">
+  <h1> New added </h1>
+
+</div> -->
+
 

@@ -11,7 +11,7 @@
               <%= f.check_box :clocked_in, onclick: "checkInChange(this)" %>      
               <%= f.hidden_field :clocked_at, :value => Time.current %>   <!-- + 3600 -->
     <% end %></td>
-   <!--  <td><%#= employee.clocked_at = "" %></td>  -->
+    <td><%= employee.clocked_at = "" %></td> 
     
   <% elsif employee.clocked_in == true %>
      <td class="text-center" id="<%= employee.id %>"><%= form_for(employee, :method => :put, remote: true) do |f| %>
@@ -24,7 +24,7 @@
 
  
   <% end %>
-<td id="time_in_<%=employee.id %>"><%= employee.clocked_at == nil ? "" : employee.clocked_at.localtime.strftime('%H:%M') %></td>
+<td id="time_in_<%=employee.id %>"><%= employee.clocked_at == nil ? "" : employee.clocked_at.strftime('%H:%M') %></td>
 
   <!-- <td><%#= employee.status.titleize %></td> -->
     

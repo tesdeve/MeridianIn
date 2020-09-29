@@ -11,52 +11,8 @@ $('#employee_<%= @employee.id %>')[0].cells[0].innerHTML = "<%= @employee.name %
 $('#employee_<%= @employee.id %>')[0].cells[1].innerHTML = "<%= @employee.surname %>"
 $('#employee_<%= @employee.id %>')[0].cells[2].innerHTML = "<%= @employee.payroll %>"  
 $('#employee_<%= @employee.id %>')[0].cells[3].innerHTML = "<%= @employee.role %>"
+$('#employee_<%= @employee.id %>')[0].cells[5].innerHTML = "<%= @employee.clocked_in ? Time.now.strftime('%H:%M') : '' %>"  
 
-
-//var a = $('#edit_employee_<%= @employee.id %> #employee_clocked_in').val()
-//a = "1"
-
-
-
-
-//
-//if ("<%= @employee.clocked_at == '' %>"){
-//	$('#edit_employee_<%= @employee.id %> #employee_clocked_in').prop("checked", false)
-//	 
-//	} else {
-//		, true)
-//	} 
-//	$('#edit_employee_<%= @employee.id %> #employee_clocked_in').prop("checked", true)
-//
-//} else {
-//	$('#edit_employee_<%= @employee.id %> #employee_clocked_in').prop("checked", false)
-//}
-
-
-
-
-var today = new Date();
-//var a = $("#time_in_<%= @employee.id %>").text()
-var curr_hour = today.getHours();
-var curr_min = today.getMinutes();
-curr_min = curr_min + "";
-
-if (curr_min.length == 1)
-   {
-   curr_min = "0" + curr_min;
-   }
-//
-//document.write(curr_hour + " : " + curr_min);
- if ("<% @employee.clocked_in %>"){ 
-	$('#employee_<%= @employee.id %>')[0].cells[5].innerHTML = curr_hour + ':' + curr_min // (today.getHours() + ':' + today.getMinutes()) //$("#time_in_<%= @employee.id %>").html( today.getHours() + ':' + today.getMinutes());//"<%= @employee.clocked_in ? Time.current.strftime('%H:%M') : '' %>"  //.localtimetime; //
- } else {
-	$('#employee_<%= @employee.id %>')[0].cells[5].innerHTML = '' 
-}
-//$('#edit_employee_<%= @employee.id %> #employee_clocked_in .clocked_in_update').prop("checked"
-//$('#employee_<%= @employee.id %>')[0].cells[5].('input[type="checkbox"]').value()
-
-
-$('#edit_emplyee_2895 .edit_employee #employee_clocked_in')
 var total_clocked_in_text = $('#total_total')[0].innerText
 var plus_total_clocked_in = parseInt(total_clocked_in_text , 10) + 1;
 var minus_total_clocked_in = parseInt(total_clocked_in_text , 10) - 1
