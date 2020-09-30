@@ -11,7 +11,7 @@ $('#employee_<%= @employee.id %>')[0].cells[0].innerHTML = "<%= @employee.name %
 $('#employee_<%= @employee.id %>')[0].cells[1].innerHTML = "<%= @employee.surname %>"
 $('#employee_<%= @employee.id %>')[0].cells[2].innerHTML = "<%= @employee.payroll %>"  
 $('#employee_<%= @employee.id %>')[0].cells[3].innerHTML = "<%= @employee.role %>"
-$('#employee_<%= @employee.id %>')[0].cells[5].innerHTML = "<%= @employee.clocked_in ? Time.now.strftime('%H:%M') : '' %>"  
+$('#employee_<%= @employee.id %>')[0].cells[5].innerHTML = "<%= @employee.clocked_in ? Time.current.strftime('%H:%M') : '' %>"  
 
 var total_clocked_in_text = $('#total_total')[0].innerText
 var plus_total_clocked_in = parseInt(total_clocked_in_text , 10) + 1;
