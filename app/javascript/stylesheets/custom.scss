@@ -255,6 +255,16 @@ label {
     .total_prod_title, #total_production, .allBooked, .t_booked, #total_booked, .total_booked, .t_replenisher, #total_replenisher, .total_replenisher, .t_booked_new, #total_booked_new, .total_booked_new, .t_stock_coordinator, #total_stock_coordinator, .total_stock_coordinator, .t_hygiene_sani, #total_hygiene_sani, .total_hygiene_sani, .t_covid_champion, #total_covid_champion, .total_covid_champion, .t_warehouse_ice, #total_warehouse_ice, .total_warehouse_ice, .t_supertemps, #total_supertemps, .total_supertemps, .t_office, #total_office, .total_office, .t_total_clocked_in, #total_total, .total_of_totals   {
     font-size: 1rem !important;
   }
+
+    .importCard, .exportCard {
+  //    max-width: 90% !important;
+    margin-left: 0% !important;
+  }
+
+  .importCard, .exportCard {
+    margin-left: 2% !important;
+    margin-bottom: 2% !important;
+  }
 }
 @media (max-width: 667px)  and (orientation : landscape){ 
   
