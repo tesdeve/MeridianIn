@@ -7,26 +7,6 @@ class EmployeesController < ApplicationController
     redirect_to root_url, notice: "Employees imported."
   end
 
-  # GET /employees
-  # GET /employees.json
-
-
-
-
-#def index
-#  @search = EMployee.search do
-#    fulltext params[:search]
-#    with(:published_at).less_than(Time.zone.now)
-#    facet(:publish_month)
-#    with(:publish_month, params[:month]) if params[:month].present?
-#  end
-#  @employees = @search.results
-#end
-
-
-
-
-
   def index
     total_production
     @employees = Employee.all.order(:surname)
@@ -41,9 +21,6 @@ class EmployeesController < ApplicationController
 
   def search 
     @employees = Employee.where("surname ILIKE ?", "%" + params[:q] + "%" )
-    #respond_to do |format|
-    #  format.html { redirect_to employees_url }
-    #end
   end 
 
   # GET /employees/1
@@ -118,13 +95,9 @@ class EmployeesController < ApplicationController
   end
 
   def remove_all
-    #@employees.map(&:destroy)
-     #@employees = Employee.all
-     #@employees.map(&:destroy)
      Employee.delete_all
     respond_to do |format|
       format.html { redirect_to employees_url, notice: 'Employees were successfully removed' }
-      #format.html { render index, notice: 'Employees were successfully removed' }
     end
   end
 
@@ -137,8 +110,6 @@ class EmployeesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def employee_params
-
-      params.require(:employee).permit(:name, :surname, :role, :payrole, :telephone, :status, :clocked_in, :clocked_at)
-
+      params.require(:employee).permit(:name, :surname, :role, :payroll, :telephone, :clocked_in, :status, :clocked_at)
     end
 end
