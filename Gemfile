@@ -28,7 +28,10 @@ gem 'jbuilder', '~> 2.7'
 
 # Gems added
 gem "roo", "~> 2.8"
-gem 'sunspot_rails'
+#gem 'sunspot_rails'
+
+gem 'prawn', '~> 2.3'
+gem 'prawn-table', '~> 0.2.2'
 
 gem 'iconv'
 

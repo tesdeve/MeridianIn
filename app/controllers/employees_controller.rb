@@ -1,5 +1,5 @@
 class EmployeesController < ApplicationController
-  before_action :set_employee, only: [:show, :edit, :update, :destroy]
+before_action :set_employee, only: [:show, :edit, :update, :destroy]
  skip_forgery_protection
  
   def import
@@ -22,9 +22,30 @@ class EmployeesController < ApplicationController
 
 
  def search 
-   @employees = Employee.where("surname ILIKE ?", "%" + params[:q] + "%" ).or(Employee.where("name ILIKE ?", "%" + params[:q] + "%" )).or(Employee.where("role ILIKE ?", "%" + params[:q] + "%" )) #.or(Employee.where("payroll LIKE ?", "%" + params[:q] + "%" ))
- #   @employees = Employee.where("surname ILIKE ?", "%" + params[:q] + "%" ) THIS WAS THE ORIGINAL
+   column_name = Employee.where("name ILIKE ?", "%" + params[:q] + "%" )
+   column_role = Employee.where("role ILIKE ?", "%" + params[:q] + "%" )
+   @employees = Employee.where("surname ILIKE ?", "%" + params[:q] + "%" ).or(column_name).or(column_role) 
  end 
+
+ 
+ def total_checked_in_pdf
+  @employees = Employee.all.order(:surname).where({clocked_in: true})
+    respond_to do |format|
+    format.html
+    format.pdf do
+      pdf = TotalCheckedInPdf.new(@employees)   #Prawn::Document.new
+      #pdf.text "HI"
+      #send_data pdf.render
+      #pdf = OrderPdf.new(@employess, view_context)
+      send_data pdf.render, filename: "Fire Register - AM - #{@employees.present? ? @employees.first.created_at.strftime('%d-%b-%y') : ""}.pdf",
+                            type: "application/pdf",
+                            disposition: "inline",
+                            page_size: "A4"
+    end
+  end
+ end
+
+
 
   # GET /employees/1
   # GET /employees/1.json
