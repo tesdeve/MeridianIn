@@ -11,11 +11,6 @@ class EmployeesController < ApplicationController
 
    total_production
    @employees = Employee.all.order(:surname)
-#  if params[:query].present?
-#   @employees = Employee.text_search(params[:query])
-# else
-#  
-#end
    @employee = Employee.new
    respond_to do |format|
      format.html
