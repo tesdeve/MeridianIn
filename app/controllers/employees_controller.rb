@@ -8,7 +8,6 @@ before_action :set_employee, only: [:show, :edit, :update, :destroy]
   end
 
   def index
-
    total_production
    @employees = Employee.all.order(:surname)
    @employee = Employee.new
@@ -33,10 +32,7 @@ before_action :set_employee, only: [:show, :edit, :update, :destroy]
     respond_to do |format|
     format.html
     format.pdf do
-      pdf = TotalCheckedInPdf.new(@employees)   #Prawn::Document.new
-      #pdf.text "HI"
-      #send_data pdf.render
-      #pdf = OrderPdf.new(@employess, view_context)
+      pdf = TotalCheckedInPdf.new(@employees)
       send_data pdf.render, filename: "Fire Register - AM - #{@employees.present? ? @employees.first.created_at.strftime('%d-%b-%y') : ""}.pdf",
                             type: "application/pdf",
                             disposition: "inline",
