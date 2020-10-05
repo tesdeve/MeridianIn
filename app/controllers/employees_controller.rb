@@ -8,20 +8,28 @@ class EmployeesController < ApplicationController
   end
 
   def index
-    total_production
-    @employees = Employee.all.order(:surname)
-    @employee = Employee.new
-    respond_to do |format|
-      format.html
-      #format.csv { render text: @employees.to_csv }
-      format.csv { send_data @employees.to_csv }
-      format.xls { send_data @employees.to_csv(col_sep: "\t") }
-    end
+
+   total_production
+   @employees = Employee.all.order(:surname)
+#  if params[:query].present?
+#   @employees = Employee.text_search(params[:query])
+# else
+#  
+#end
+   @employee = Employee.new
+   respond_to do |format|
+     format.html
+     #format.csv { render text: @employees.to_csv }
+     format.csv { send_data @employees.to_csv }
+     format.xls { send_data @employees.to_csv(col_sep: "\t") }
+   end
   end
 
-  def search 
-    @employees = Employee.where("surname ILIKE ?", "%" + params[:q] + "%" )
-  end 
+
+ def search 
+   @employees = Employee.where("surname ILIKE ?", "%" + params[:q] + "%" ).or(Employee.where("name ILIKE ?", "%" + params[:q] + "%" )).or(Employee.where("role ILIKE ?", "%" + params[:q] + "%" )) #.or(Employee.where("payroll LIKE ?", "%" + params[:q] + "%" ))
+ #   @employees = Employee.where("surname ILIKE ?", "%" + params[:q] + "%" ) THIS WAS THE ORIGINAL
+ end 
 
   # GET /employees/1
   # GET /employees/1.json
