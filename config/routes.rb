@@ -6,7 +6,8 @@ Rails.application.routes.draw do
                delete 'remove_all'}
   end  
 
-  get 'search', to: 'employees#search' 
+  get 'search', to: 'employees#search'
+  get 'total_checked_in_pdf', to: 'employees#total_checked_in_pdf'  
 end
 
 # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

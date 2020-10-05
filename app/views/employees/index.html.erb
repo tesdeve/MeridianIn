@@ -3,7 +3,7 @@
 <h1 class="contractorsTitle">Temps Attendance</h1>
 
 <h3 class="text-center py-3 top-time"><%= Time.current.strftime('%H:%M')  %></h3>
-<h4 class="date text-center mt-3"><%= @employees.present? ? @employees.first.created_at.strftime('%d - %B- %Y') : "" %> </h4> 
+<h4 class="date text-center mt-3"><%= @employees.present? ? @employees.first.created_at.strftime('%d-%b-%y') : "" %> </h4> 
 
 <hr class="my-5">
 
@@ -31,10 +31,12 @@
 
   <div class="card col-ms-6 col-md-5 separate block1 exportCard ml-3">
     <div class="card-body">
-      <h5 class="card-title">Export Checked in Contractors</h5>
-      <p class="card-text"> To export this file as a spreadsheet click on the Excel link. Done!</p>
-      <div class="my-4"> Download: <%= link_to "Excel", employees_path(format: "xls") %></div>
-        <p class="card-text"> After you dowload the Temps Attendance as Excel file you can delete it and upload a new one when needed. Simply click the Delete List link below. </p>
+      <h5 class="card-title">Export Excel and PDF files</h5>
+      <p class="card-text"> To export this file as an Excel or PDF file click on any of the links as needed. Done!</p>
+      <div class="my-4"> Download: <%= link_to "Excel - Temps Attendance", employees_path(format: "xls") %></div>
+      <div class="my-4"> Download: <%= link_to "PDF - Fire Register", total_checked_in_pdf_path(format: "pdf") %></div>
+        <p class="card-text"> After you dowload the Temps Attendance as Excel or Fire Register as PDF you could delete it and upload a new one when needed. 
+        Simply click the Delete List link below. </p>
         <%= link_to 'Delete List', {:action => :remove_all}, :method => :delete , data: { confirm: 'Are you sure?' }, :class => "mt-4" %>
     </div>
   </div>
