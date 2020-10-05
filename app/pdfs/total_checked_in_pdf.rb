@@ -28,6 +28,8 @@ def line_items
     move_down 20
     table line_item_rows do 
       row(0).font_style = :bold
+      row(0).background_color = "7fc9e0"
+     # row(0).color = "6495ED"
       self.header = true
     end
 end
