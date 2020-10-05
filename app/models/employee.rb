@@ -1,4 +1,5 @@
 class Employee < ApplicationRecord
+
   require 'roo'
 
   def self.to_csv(options = {})
