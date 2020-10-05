@@ -145,29 +145,10 @@
   <div class="marginBottom">
     <%= link_to 'Add Temp', new_employee_path, id: "new_link", remote: true %>
   </div>  
-
-
-
-
-
-<form class="form-inline my-2 my-lg-0" action="/search">
+  <form class="form-inline my-2 my-lg-0" action="/search">
     <input class="form-control mr-sm-2" name="q" type="search" placeholder="Search" aria-label="Search">
     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-  </form> 
-
-
-<!-- PG_Search -->
-<!-- <%#= form_tag employees_path, method: :get do %>
-  <p>
-    <%#= text_field_tag :query, params[:query] %>
-    <%#= submit_tag "Search", name: nil %>
-  </p>
-<%# end %> --> 
-
-
-
-
-
+  </form>
 
   <div class="table table-responsive mb-5 mt-4"> 
     <div class="indextable">
