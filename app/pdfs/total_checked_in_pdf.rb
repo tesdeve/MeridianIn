@@ -1,7 +1,7 @@
 class TotalCheckedInPdf < Prawn::Document
 
   def initialize(employees)
-    super(top_margin: 110, left_margin: 90)
+    super(top_margin: 110, left_margin: 115)
     @employees = employees
     fire_register_title
     date
